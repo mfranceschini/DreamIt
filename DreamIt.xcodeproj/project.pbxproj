@@ -1,0 +1,477 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7623B6F325316FE30038E3CC /* DreamItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623B6F225316FE30038E3CC /* DreamItApp.swift */; };
+		7623B6F525316FE30038E3CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623B6F425316FE30038E3CC /* ContentView.swift */; };
+		7623B6F725316FE60038E3CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7623B6F625316FE60038E3CC /* Assets.xcassets */; };
+		7623B6FA25316FE60038E3CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7623B6F925316FE60038E3CC /* Preview Assets.xcassets */; };
+		764CEDA02550FC53006B1A54 /* LikedIdeasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CED9F2550FC53006B1A54 /* LikedIdeasViewController.swift */; };
+		767F2DA3255E161800638222 /* IdeaItemModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767F2DA2255E161800638222 /* IdeaItemModelView.swift */; };
+		767F2DA6255E20A600638222 /* IdeaDetailsViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767F2DA5255E20A600638222 /* IdeaDetailsViewModifier.swift */; };
+		7696E1D525410F9C00EA94DF /* DreamCardViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7696E1D425410F9C00EA94DF /* DreamCardViewModifier.swift */; };
+		7696E1DB25412B7600EA94DF /* TabbarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7696E1DA25412B7600EA94DF /* TabbarModel.swift */; };
+		7696E1DE25412CC700EA94DF /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7696E1DD25412CC700EA94DF /* CategoryModel.swift */; };
+		7696E1E12541304300EA94DF /* IdeaItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7696E1E02541304300EA94DF /* IdeaItemModel.swift */; };
+		76AD4C5525538B1300C1B5C6 /* LikedIdeasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AD4C5425538B1300C1B5C6 /* LikedIdeasView.swift */; };
+		76B28CD72531747600F1A61C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B28CD62531747600F1A61C /* SignUpView.swift */; };
+		76B28CDA253174C300F1A61C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B28CD9253174C300F1A61C /* LoginView.swift */; };
+		76B28CDF25318A9B00F1A61C /* LandingViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B28CDE25318A9B00F1A61C /* LandingViewModifier.swift */; };
+		76B332A3253E8A7300F2B532 /* DreamListViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B332A2253E8A7300F2B532 /* DreamListViewModifier.swift */; };
+		76BD6C722554DFCE00E4F392 /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BD6C712554DFCE00E4F392 /* TabbarView.swift */; };
+		76C98383256365FD000EA3A6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C98382256365FD000EA3A6 /* Constants.swift */; };
+		76CF26D5255B762100A46A4F /* SheetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF26D4255B762100A46A4F /* SheetPresenter.swift */; };
+		76CF26D8255B8B5900A46A4F /* IdeaDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF26D7255B8B5900A46A4F /* IdeaDetailsView.swift */; };
+		76CF26DC255B936000A46A4F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF26DB255B936000A46A4F /* SplashView.swift */; };
+		76E359162537B83C0006A641 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E359152537B83B0006A641 /* SheetView.swift */; };
+		76E359192537B8DE0006A641 /* CustomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E359182537B8DE0006A641 /* CustomSheetView.swift */; };
+		76E3591C2537D7A00006A641 /* ModalViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3591B2537D7A00006A641 /* ModalViewModifier.swift */; };
+		76E359212537E0CF0006A641 /* CloseModalLip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E359202537E0CF0006A641 /* CloseModalLip.swift */; };
+		76E359282539232A0006A641 /* IdeaListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E359272539232A0006A641 /* IdeaListView.swift */; };
+		76E3592B253941010006A641 /* DreamCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3592A253941010006A641 /* DreamCard.swift */; };
+		76E3592E253942AC0006A641 /* CategoryBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3592D253942AC0006A641 /* CategoryBubble.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7623B6EF25316FE30038E3CC /* DreamIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7623B6F225316FE30038E3CC /* DreamItApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamItApp.swift; sourceTree = "<group>"; };
+		7623B6F425316FE30038E3CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7623B6F625316FE60038E3CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7623B6F925316FE60038E3CC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7623B6FB25316FE60038E3CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		764CED9F2550FC53006B1A54 /* LikedIdeasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedIdeasViewController.swift; sourceTree = "<group>"; };
+		767F2DA2255E161800638222 /* IdeaItemModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaItemModelView.swift; sourceTree = "<group>"; };
+		767F2DA5255E20A600638222 /* IdeaDetailsViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaDetailsViewModifier.swift; sourceTree = "<group>"; };
+		7696E1D425410F9C00EA94DF /* DreamCardViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamCardViewModifier.swift; sourceTree = "<group>"; };
+		7696E1DA25412B7600EA94DF /* TabbarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarModel.swift; sourceTree = "<group>"; };
+		7696E1DD25412CC700EA94DF /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		7696E1E02541304300EA94DF /* IdeaItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaItemModel.swift; sourceTree = "<group>"; };
+		76AD4C5425538B1300C1B5C6 /* LikedIdeasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedIdeasView.swift; sourceTree = "<group>"; };
+		76B28CD62531747600F1A61C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		76B28CD9253174C300F1A61C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		76B28CDE25318A9B00F1A61C /* LandingViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewModifier.swift; sourceTree = "<group>"; };
+		76B332A2253E8A7300F2B532 /* DreamListViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamListViewModifier.swift; sourceTree = "<group>"; };
+		76BD6C712554DFCE00E4F392 /* TabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
+		76C98382256365FD000EA3A6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		76CF26D4255B762100A46A4F /* SheetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPresenter.swift; sourceTree = "<group>"; };
+		76CF26D7255B8B5900A46A4F /* IdeaDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaDetailsView.swift; sourceTree = "<group>"; };
+		76CF26DB255B936000A46A4F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		76E359152537B83B0006A641 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
+		76E359182537B8DE0006A641 /* CustomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheetView.swift; sourceTree = "<group>"; };
+		76E3591B2537D7A00006A641 /* ModalViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewModifier.swift; sourceTree = "<group>"; };
+		76E359202537E0CF0006A641 /* CloseModalLip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseModalLip.swift; sourceTree = "<group>"; };
+		76E359272539232A0006A641 /* IdeaListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaListView.swift; sourceTree = "<group>"; };
+		76E3592A253941010006A641 /* DreamCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamCard.swift; sourceTree = "<group>"; };
+		76E3592D253942AC0006A641 /* CategoryBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBubble.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7623B6EC25316FE30038E3CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7623B6E625316FE30038E3CC = {
+			isa = PBXGroup;
+			children = (
+				7623B6F125316FE30038E3CC /* DreamIt */,
+				7623B6F025316FE30038E3CC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7623B6F025316FE30038E3CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7623B6EF25316FE30038E3CC /* DreamIt.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7623B6F125316FE30038E3CC /* DreamIt */ = {
+			isa = PBXGroup;
+			children = (
+				76C98381256365E9000EA3A6 /* Utils */,
+				767F2D9C255E14E400638222 /* ViewModels */,
+				76E3591F2537E0A90006A641 /* Components */,
+				76B28CE325318C3600F1A61C /* Models */,
+				76B28CDD25318A7200F1A61C /* Modifiers */,
+				7623B6F225316FE30038E3CC /* DreamItApp.swift */,
+				76B28CD4253172CA00F1A61C /* Views */,
+				7623B6F625316FE60038E3CC /* Assets.xcassets */,
+				7623B6FB25316FE60038E3CC /* Info.plist */,
+				7623B6F825316FE60038E3CC /* Preview Content */,
+			);
+			path = DreamIt;
+			sourceTree = "<group>";
+		};
+		7623B6F825316FE60038E3CC /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				7623B6F925316FE60038E3CC /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		767F2D9C255E14E400638222 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				767F2DA2255E161800638222 /* IdeaItemModelView.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		76B28CD4253172CA00F1A61C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7623B6F425316FE30038E3CC /* ContentView.swift */,
+				76B28CD62531747600F1A61C /* SignUpView.swift */,
+				76B28CD9253174C300F1A61C /* LoginView.swift */,
+				76E359152537B83B0006A641 /* SheetView.swift */,
+				76E359182537B8DE0006A641 /* CustomSheetView.swift */,
+				76E359272539232A0006A641 /* IdeaListView.swift */,
+				764CED9F2550FC53006B1A54 /* LikedIdeasViewController.swift */,
+				76AD4C5425538B1300C1B5C6 /* LikedIdeasView.swift */,
+				76BD6C712554DFCE00E4F392 /* TabbarView.swift */,
+				76CF26D7255B8B5900A46A4F /* IdeaDetailsView.swift */,
+				76CF26DB255B936000A46A4F /* SplashView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		76B28CDD25318A7200F1A61C /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				76B28CDE25318A9B00F1A61C /* LandingViewModifier.swift */,
+				76E3591B2537D7A00006A641 /* ModalViewModifier.swift */,
+				76B332A2253E8A7300F2B532 /* DreamListViewModifier.swift */,
+				7696E1D425410F9C00EA94DF /* DreamCardViewModifier.swift */,
+				767F2DA5255E20A600638222 /* IdeaDetailsViewModifier.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		76B28CE325318C3600F1A61C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7696E1DA25412B7600EA94DF /* TabbarModel.swift */,
+				7696E1DD25412CC700EA94DF /* CategoryModel.swift */,
+				7696E1E02541304300EA94DF /* IdeaItemModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		76C98381256365E9000EA3A6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				76C98382256365FD000EA3A6 /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		76E3591F2537E0A90006A641 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				76E359202537E0CF0006A641 /* CloseModalLip.swift */,
+				76E3592A253941010006A641 /* DreamCard.swift */,
+				76E3592D253942AC0006A641 /* CategoryBubble.swift */,
+				76CF26D4255B762100A46A4F /* SheetPresenter.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7623B6EE25316FE30038E3CC /* DreamIt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7623B6FE25316FE60038E3CC /* Build configuration list for PBXNativeTarget "DreamIt" */;
+			buildPhases = (
+				7623B6EB25316FE30038E3CC /* Sources */,
+				7623B6EC25316FE30038E3CC /* Frameworks */,
+				7623B6ED25316FE30038E3CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DreamIt;
+			productName = DreamIt;
+			productReference = 7623B6EF25316FE30038E3CC /* DreamIt.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7623B6E725316FE30038E3CC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					7623B6EE25316FE30038E3CC = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
+				};
+			};
+			buildConfigurationList = 7623B6EA25316FE30038E3CC /* Build configuration list for PBXProject "DreamIt" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7623B6E625316FE30038E3CC;
+			productRefGroup = 7623B6F025316FE30038E3CC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7623B6EE25316FE30038E3CC /* DreamIt */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7623B6ED25316FE30038E3CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7623B6FA25316FE60038E3CC /* Preview Assets.xcassets in Resources */,
+				7623B6F725316FE60038E3CC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7623B6EB25316FE30038E3CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7623B6F525316FE30038E3CC /* ContentView.swift in Sources */,
+				7696E1DB25412B7600EA94DF /* TabbarModel.swift in Sources */,
+				76E359162537B83C0006A641 /* SheetView.swift in Sources */,
+				76CF26D8255B8B5900A46A4F /* IdeaDetailsView.swift in Sources */,
+				767F2DA6255E20A600638222 /* IdeaDetailsViewModifier.swift in Sources */,
+				76E359282539232A0006A641 /* IdeaListView.swift in Sources */,
+				7696E1D525410F9C00EA94DF /* DreamCardViewModifier.swift in Sources */,
+				76B332A3253E8A7300F2B532 /* DreamListViewModifier.swift in Sources */,
+				76B28CD72531747600F1A61C /* SignUpView.swift in Sources */,
+				76E3592B253941010006A641 /* DreamCard.swift in Sources */,
+				76CF26D5255B762100A46A4F /* SheetPresenter.swift in Sources */,
+				76C98383256365FD000EA3A6 /* Constants.swift in Sources */,
+				7696E1E12541304300EA94DF /* IdeaItemModel.swift in Sources */,
+				76B28CDA253174C300F1A61C /* LoginView.swift in Sources */,
+				76E3592E253942AC0006A641 /* CategoryBubble.swift in Sources */,
+				76B28CDF25318A9B00F1A61C /* LandingViewModifier.swift in Sources */,
+				7623B6F325316FE30038E3CC /* DreamItApp.swift in Sources */,
+				764CEDA02550FC53006B1A54 /* LikedIdeasViewController.swift in Sources */,
+				76E359192537B8DE0006A641 /* CustomSheetView.swift in Sources */,
+				767F2DA3255E161800638222 /* IdeaItemModelView.swift in Sources */,
+				7696E1DE25412CC700EA94DF /* CategoryModel.swift in Sources */,
+				76CF26DC255B936000A46A4F /* SplashView.swift in Sources */,
+				76E359212537E0CF0006A641 /* CloseModalLip.swift in Sources */,
+				76BD6C722554DFCE00E4F392 /* TabbarView.swift in Sources */,
+				76E3591C2537D7A00006A641 /* ModalViewModifier.swift in Sources */,
+				76AD4C5525538B1300C1B5C6 /* LikedIdeasView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7623B6FC25316FE60038E3CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7623B6FD25316FE60038E3CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7623B6FF25316FE60038E3CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"DreamIt/Preview Content\"";
+				DEVELOPMENT_TEAM = 36ABB55865;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = DreamIt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = franceschini.picarelli.matheus.DreamIt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7623B70025316FE60038E3CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"DreamIt/Preview Content\"";
+				DEVELOPMENT_TEAM = 36ABB55865;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = DreamIt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = franceschini.picarelli.matheus.DreamIt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7623B6EA25316FE30038E3CC /* Build configuration list for PBXProject "DreamIt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7623B6FC25316FE60038E3CC /* Debug */,
+				7623B6FD25316FE60038E3CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7623B6FE25316FE60038E3CC /* Build configuration list for PBXNativeTarget "DreamIt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7623B6FF25316FE60038E3CC /* Debug */,
+				7623B70025316FE60038E3CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7623B6E725316FE30038E3CC /* Project object */;
+}
