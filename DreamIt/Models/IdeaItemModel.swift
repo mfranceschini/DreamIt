@@ -7,15 +7,17 @@
 
 import SwiftUI
 
-struct IdeaItemModel {
+struct IdeaItemModel: Hashable {
     var title: String
     var author: String
     var createdAt: Date
     var impressions: Int
     var liked: Bool
     var thumbnail: UIImage
+    var category: Int
     
-    public init(title: String, author: String, createdAt: Date, impressions: Int, liked: Bool, thumbnail: UIImage) {
+    public init(category: Int, title: String, author: String, createdAt: Date, impressions: Int, liked: Bool, thumbnail: UIImage) {
+        self.category = category
         self.title = title
         self.author = author
         self.createdAt = createdAt

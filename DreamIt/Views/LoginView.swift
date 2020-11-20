@@ -25,6 +25,7 @@ struct LoginView: View {
             
             VStack {
                 Text("Welcome back")
+                    .fontWeight(.bold)
                     .modifier(ModalTitleModifier())
                 Divider()
                     .background(colorScheme == .dark ? Color.white : Color.gray.opacity(0.5))
@@ -69,7 +70,11 @@ struct LoginView: View {
                     Text("- or -")
                         .fontWeight(.bold)
                         .modifier(OrLabelModifier())
-                    Button(action: { self.isLoggedIn = true }) {
+                    Button(action: {
+                        withAnimation {
+                            self.isLoggedIn = true
+                        }
+                    }) {
                         Text("Login with DreamIt account")
                             .underline()
                             .modifier(LoginDreamItLabelModifier())

@@ -90,20 +90,12 @@ class LikedIdeasViewController: UIViewController, UITableViewDelegate,  UITableV
     
     func colorWithGradient() -> UIColor {
         
-        let background: [UIColor] = [
-            UIColor(red: 0.96, green: 0.44, blue: 0.24, alpha: 0.8),
-            UIColor(red: 1.00, green: 0.42, blue: 0.44, alpha: 0.8),
-            UIColor(red: 0.95, green: 0.49, blue: 0.71, alpha: 0.8),
-            UIColor(red: 0.61, green: 0.31, blue: 0.62, alpha: 0.8),
-            UIColor(red: 0.37, green: 0.22, blue: 0.56, alpha: 0.8),
-        ]
-        
         // create the background layer that will hold the gradient
         let backgroundGradientLayer = CAGradientLayer()
         backgroundGradientLayer.frame = CGRect(x: 0, y: 0, width: Constants.screenSize.width, height: Constants.screenSize.height)
          
         // we create an array of CG colors from out UIColor array
-        let cgColors = background.map({$0.cgColor})
+        let cgColors: [CGColor] = Constants.background.map({$0.cgColor!})
         
         backgroundGradientLayer.colors = cgColors
         

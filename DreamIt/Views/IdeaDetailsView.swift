@@ -9,7 +9,7 @@ import SwiftUI
 
 struct IdeaDetailsView: View {
     
-    var ideaData: IdeaItemModelView
+    @Binding var ideaData: IdeaItemModelView
     
     var body: some View {
         VStack {
@@ -86,6 +86,7 @@ struct IdeaDetailsView: View {
                                 .background(Color.gray)
                                 .clipShape(Capsule())
                         }
+                        .frame(width: Constants.screenSize.width * 0.9, alignment: .leading)
                         
                         Text("filename.pdf")
                             .font(.callout)
@@ -101,8 +102,12 @@ struct IdeaDetailsView: View {
                 Spacer()
                 
                 VStack {
-                    Button("Like", action: {})
-                        .buttonStyle(LikeButtonStyle())
+                    Button(self.ideaData.liked ? "Liked" : "Like", action: {
+                        withAnimation {
+                            self.ideaData.liked.toggle()
+                        }
+                    })
+                    .buttonStyle(LikeButtonStyle(isLiked: self.ideaData.liked))
 
                     Button("I'm interested", action: {})
                         .buttonStyle(InterestedButtonStyle())
@@ -114,8 +119,8 @@ struct IdeaDetailsView: View {
     }
 }
 
-struct IdeaDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        IdeaDetailsView(ideaData: IdeaItemModelView(ideaItem: IdeaItemModel(title: "Mobile game", author: "Johnny Deep", createdAt: Date(), impressions: 1000, liked: false, thumbnail: UIImage(named: "test")!)))
-    }
-}
+//struct IdeaDetailsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        IdeaDetailsView(ideaData: IdeaItemModelView(ideaItem: IdeaItemModel(title: "Mobile game", author: "Johnny Deep", createdAt: Date(), impressions: 1000, liked: false, thumbnail: UIImage(named: "test")!)))
+//    }
+//}

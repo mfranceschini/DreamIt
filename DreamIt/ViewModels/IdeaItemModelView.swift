@@ -18,8 +18,12 @@ extension Double {
     }
 }
 
-struct IdeaItemModelView {
-    private let ideaItem: IdeaItemModel
+struct IdeaItemModelView: Hashable {
+    static func == (lhs: IdeaItemModelView, rhs: IdeaItemModelView) -> Bool {
+        return lhs.title == rhs.title
+    }
+    
+    private var ideaItem: IdeaItemModel
     private let calendar: Calendar
     
     init(ideaItem: IdeaItemModel, calendar: Calendar = Calendar(identifier: .gregorian)) {
@@ -36,7 +40,16 @@ struct IdeaItemModelView {
     }
     
     public var liked: Bool {
-        ideaItem.liked
+        get {
+            ideaItem.liked
+        }
+        set {
+            ideaItem.liked = newValue
+        }
+    }
+    
+    public var category: Int {
+        ideaItem.category
     }
     
     public var thumbnail: UIImage {

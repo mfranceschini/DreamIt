@@ -25,6 +25,7 @@ struct ContentView: View {
     var body: some View {
         if isLoggedIn {
             TabbarView(newListingPresented: false)
+                .transition(.move(edge: .trailing))
         }
         else {
             ZStack {
@@ -45,9 +46,9 @@ struct ContentView: View {
                     
                     VStack(alignment: .center) {
                         Button("Sign Up") {
-                            self.isModalPresented = true
-                            self.targetView = TargetView.SignUp;
                             withAnimation(.spring(dampingFraction: 0.7)) {
+                                self.isModalPresented = true
+                                self.targetView = TargetView.SignUp;
                                 self.currentHeight = 0.0
                                 self.movingOffset = 0.0
                             }
@@ -55,9 +56,9 @@ struct ContentView: View {
                         .buttonStyle(SignUpButtonStyle())
                         
                         Button("Login") {
-                            self.isModalPresented = true
-                            self.targetView = TargetView.Login;
                             withAnimation(.spring(dampingFraction: 0.7)) {
+                                self.isModalPresented = true
+                                self.targetView = TargetView.Login;
                                 self.currentHeight = 0.0
                                 self.movingOffset = 0.0
                             }
@@ -70,6 +71,7 @@ struct ContentView: View {
                 .padding()
                 
                 CustomSheetView(currentHeight: self.$currentHeight, movingOffset: self.$movingOffset, isShowing: self.$isModalPresented, targetView: self.$targetView, isLoggedIn: self.$isLoggedIn)
+                    .transition(.move(edge: .bottom))
             }
             .background(
                 LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? Constants.background.reversed() : Constants.background), startPoint: .bottom, endPoint: .top)

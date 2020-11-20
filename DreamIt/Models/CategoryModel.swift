@@ -8,10 +8,12 @@
 import Foundation
 
 struct CategoryModel {
+    var id: Int
     var name: String
     var selected: Bool
     
-    init(name: String, selected: Bool) {
+    init(id: Int, name: String, selected: Bool) {
+        self.id = id
         self.name = name
         self.selected = selected
     }

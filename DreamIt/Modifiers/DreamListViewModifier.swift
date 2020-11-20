@@ -17,9 +17,9 @@ struct ScrollViewModifier: ViewModifier {
             .navigationTitle(Text("Ideas List"))
             .navigationBarTitleDisplayMode(.automatic)
             .padding(.top, 230)
-//            .background(
-//                LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? Constants.background.reversed() : Constants.background), startPoint: .bottom, endPoint: .top)
-//            )
+            .background(
+                LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? Constants.background.reversed() : Constants.background), startPoint: .bottom, endPoint: .top)
+            )
     }
 }
 

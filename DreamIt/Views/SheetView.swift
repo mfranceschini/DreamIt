@@ -31,7 +31,6 @@ struct SheetView<Content>: View where Content: View {
                         self.movingOffset =  drag.translation.height  + self.currentHeight
                     }
                 }).onEnded({ drag in
-                    withAnimation( .spring(dampingFraction: 0.7) ) {
                         if  self.movingOffset > -50 {
                             self.movingOffset = 0.0
                         }
@@ -41,7 +40,6 @@ struct SheetView<Content>: View where Content: View {
                             self.onDragEnd(.down)
                         }
                         self.currentHeight = self.movingOffset
-                    }
                 })
             )
     }

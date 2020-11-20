@@ -35,7 +35,7 @@ struct CustomSheetView: View {
                 }
                 .background(colorScheme == .dark ? Color.black : Color.white)
                 .shadow(color: Color.gray.opacity(0.2), radius: 6, x: 0.0, y: -5)
-                .cornerRadius(25.0, corners: [.topLeft, .topRight])
+                .cornerRadius(40.0)
             }
         }
     }

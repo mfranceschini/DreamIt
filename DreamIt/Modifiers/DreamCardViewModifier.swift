@@ -25,10 +25,12 @@ struct ContainerModifier: ViewModifier {
 }
 
 struct LikeModifier: ViewModifier {
+    @Environment(\.colorScheme) var colorScheme
+    var liked: Bool
     func body(content: Content) -> some View {
         content
-            .frame(width: Constants.screenSize.width * 0.42, alignment: .leading)
-            .padding(.leading)
+            .foregroundColor(self.liked ? colorScheme == .dark ? Color.white : Color.blue : Color(UIColor.lightGray))
+            .frame(width: 20, height: 20, alignment: .leading)
     }
 }
 
@@ -38,7 +40,7 @@ struct DaysAfterPostLabelModifier: ViewModifier {
         content
             .font(.footnote)
             .foregroundColor(colorScheme == .dark ? Color.white : Color.gray)
-            .frame(width: Constants.screenSize.width * 0.42, alignment: .trailing)
+            .frame(alignment: .trailing)
             .padding(.trailing, 10)
     }
 }
@@ -46,8 +48,8 @@ struct DaysAfterPostLabelModifier: ViewModifier {
 struct DreamImageModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .frame(width: 80, height: 80, alignment: .leading)
-            .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 0))
+            .frame(width: 90, height: 90, alignment: .leading)
+            .padding(.leading)
     }
 }
 
@@ -76,7 +78,7 @@ struct DreamImpressionsModifier: ViewModifier {
         content
             .font(.footnote)
             .foregroundColor(colorScheme == .dark ? Color.white : Color.gray)
-            .frame(width: Constants.screenSize.width * 0.83, alignment: .bottomTrailing)
+            .frame(alignment: .bottomTrailing)
             .padding([.bottom, .top])
         
     }

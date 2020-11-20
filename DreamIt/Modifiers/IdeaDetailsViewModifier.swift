@@ -65,13 +65,15 @@ struct ImpressionsLabelModifier: ViewModifier {
 }
 
 struct LikeButtonStyle: ButtonStyle {
+    var isLiked: Bool
     @Environment(\.colorScheme) var colorScheme
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .frame(width: 70, height: 15, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             .padding()
             .font(.system(size: 20))
-            .foregroundColor(.blue)
+            .foregroundColor(isLiked ? .blue : .black)
+            .background(isLiked ? Color.clear : Color.white)
             .cornerRadius(15)
             .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
             .shadow(color: colorScheme == .dark ? Color.white.opacity(0.3) : Color.gray,
