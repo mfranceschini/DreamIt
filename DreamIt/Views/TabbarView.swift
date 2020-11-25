@@ -10,29 +10,50 @@ import SwiftUI
 struct TabbarView: View {
     @Environment(\.colorScheme) var colorScheme
     @State var newListingPresented: Bool
+    @State private var selectedTab = "home"
     
     var body: some View {
-        TabView {
-            DreamListView(ideaDetailsPresented: false)
+        TabView(selection: $selectedTab) {
+            IdeaListView(ideaDetailsPresented: false, selectedTab: $selectedTab)
                 .tabItem {
                     Image(systemName: "house.fill")
+                        .onTapGesture {
+                            self.selectedTab = "home"
+                        }
                 }
+                .tag("home")
             LikedIdeasView()
                 .tabItem {
                     Image(systemName: "ellipsis.bubble.fill")
+                        .onTapGesture {
+                            self.selectedTab = "chats"
+                        }
                 }
-            DreamListView(ideaDetailsPresented: false)
+                .tag("chats")
+            IdeaListView(ideaDetailsPresented: false, selectedTab: $selectedTab)
                 .tabItem {
                     Image(systemName: "plus.diamond")
+                        .onTapGesture {
+                            self.selectedTab = "new"
+                        }
                 }
+                .tag("new")
             LikedIdeasView()
                 .tabItem {
                     Image(systemName: "lightbulb.fill")
+                        .onTapGesture {
+                            self.selectedTab = "liked"
+                        }
                 }
-            DreamListView(ideaDetailsPresented: false)
+                .tag("liked")
+            IdeaListView(ideaDetailsPresented: false, selectedTab: $selectedTab)
                 .tabItem {
                     Image(systemName: "person.fill")
+                        .onTapGesture {
+                            self.selectedTab = "profile"
+                        }
                 }
+                .tag("profile")
         }
         .onAppear() {
             UITabBar.appearance().isTranslucent = true

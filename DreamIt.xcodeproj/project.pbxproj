@@ -37,6 +37,7 @@
 		76E359282539232A0006A641 /* IdeaListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E359272539232A0006A641 /* IdeaListView.swift */; };
 		76E3592B253941010006A641 /* DreamCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3592A253941010006A641 /* DreamCard.swift */; };
 		76E3592E253942AC0006A641 /* CategoryBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3592D253942AC0006A641 /* CategoryBubble.swift */; };
+		76EDE909256E1DB7001DBC4E /* RefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EDE908256E1DB7001DBC4E /* RefreshableScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		76E359272539232A0006A641 /* IdeaListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaListView.swift; sourceTree = "<group>"; };
 		76E3592A253941010006A641 /* DreamCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamCard.swift; sourceTree = "<group>"; };
 		76E3592D253942AC0006A641 /* CategoryBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBubble.swift; sourceTree = "<group>"; };
+		76EDE908256E1DB7001DBC4E /* RefreshableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 				76CF26D4255B762100A46A4F /* SheetPresenter.swift */,
 				76ACDB91256765C9000ADF73 /* Loading.swift */,
 				76ACDB9425677D60000ADF73 /* SearchBar.swift */,
+				76EDE908256E1DB7001DBC4E /* RefreshableScrollView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				76E3592B253941010006A641 /* DreamCard.swift in Sources */,
 				76ACDB92256765C9000ADF73 /* Loading.swift in Sources */,
 				76CF26D5255B762100A46A4F /* SheetPresenter.swift in Sources */,
+				76EDE909256E1DB7001DBC4E /* RefreshableScrollView.swift in Sources */,
 				76C98383256365FD000EA3A6 /* Constants.swift in Sources */,
 				7696E1E12541304300EA94DF /* IdeaItemModel.swift in Sources */,
 				76B28CDA253174C300F1A61C /* LoginView.swift in Sources */,

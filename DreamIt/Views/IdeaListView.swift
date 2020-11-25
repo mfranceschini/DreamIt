@@ -7,7 +7,13 @@
 
 import SwiftUI
 
-struct DreamListView: View {
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
+struct IdeaListView: View {
     
     @State var categories: [CategoryModel] = [
         CategoryModel(id: 1,name: "Mobile Apps", selected: true),
@@ -37,9 +43,27 @@ struct DreamListView: View {
     @State private var loading: Bool = true
     @State private var scale: CGFloat = 1
     @State private var searchText : String = ""
+    @Environment(\.colorScheme) var colorScheme
+    @Binding var selectedTab: String
     
     var body: some View {
-        NavigationView {
+        VStack {
+            HStack {
+                Text("Ideas List")
+                    .fontWeight(.bold)
+                    .modifier(TitleListModifier())
+                Spacer()
+                Button(action: {
+                    selectedTab = "profile"
+                }) {
+                    Image("profile")
+                        .resizable()
+                        .modifier(ProfileImageModifier())
+                }
+            }
+            .frame(width: Constants.screenSize.width)
+            .padding([.top, .leading, .trailing])
+            
             ScrollView {
                 if loading {
                     Loading()
@@ -47,20 +71,18 @@ struct DreamListView: View {
                         .background(Color.clear)
                 }
                 else {
-                    VStack {
-                        SearchBar(text: $searchText)
-                            .frame(width: Constants.screenSize.width * 0.95, alignment: .center)
-                        Group {
-                            Text("Categories")
-                                .modifier(CategoriesTitleModifier())
-                            
-                            ScrollView([.horizontal], showsIndicators: false) {
-                                HStack(spacing: 20) {
-                                    CategoryBubble(categories: $categories)
-                                }
-                                .frame(height: 50)
-                                .padding(.horizontal, 50)
+                    SearchBar(text: $searchText)
+                        .frame(width: Constants.screenSize.width * 0.95, alignment: .center)
+                    Group {
+                        Text("Categories")
+                            .modifier(CategoriesTitleModifier())
+                        
+                        ScrollView([.horizontal], showsIndicators: false) {
+                            HStack(spacing: 15) {
+                                CategoryBubble(categories: $categories)
                             }
+                            .frame(height: 50)
+                            .padding(.horizontal, 50)
                         }
                     }
                     
@@ -72,39 +94,34 @@ struct DreamListView: View {
                         DreamCard(item: $ideasList[ideaIndex])
                             .onTapGesture { self.ideaDetailsPresented = true }
                             .scaleEffect(scale)
-                            .sheet(isPresented: $ideaDetailsPresented, content: { IdeaDetailsView(ideaData: $ideasList[ideaIndex]) })
+                            .sheet(
+                                isPresented: $ideaDetailsPresented,
+                                content: { IdeaDetailsView(ideaData: $ideasList[ideaIndex]) }
+                            )
                     }
                 }
                 
             }
-            .padding(.bottom, Constants.screenSize.height * 0.27)
-            .modifier(ScrollViewModifier())
-            .navigationBarItems(trailing:
-                                    Button(action: {
-                                        print("Navigation bar item action")
-                                    }) {
-                                        Image(systemName: "person.fill")
-                                            .resizable()
-                                            .frame(width: 25, height: 25)
-                                            .font(Font.system(.title))
-                                            .padding(.all, 7)
-                                            .background(Color.blue)
-                                            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                                    }
-            )
             .onAppear() {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
                     self.loading = false
                 }
             }
+            .onTapGesture {
+                UIApplication.shared.endEditing()
+            }
         }
+        .background(
+            LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? Constants.background.reversed() : Constants.background), startPoint: .bottom, endPoint: .top)
+        )
+        .edgesIgnoringSafeArea(.top)
         .blur(radius: self.ideaDetailsPresented ? 3.0 : 0.0)
     }
     
 }
 
-struct DreamListView_Previews: PreviewProvider {
-    static var previews: some View {
-        DreamListView()
-    }
-}
+//struct DreamListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        IdeaListView()
+//    }
+//}

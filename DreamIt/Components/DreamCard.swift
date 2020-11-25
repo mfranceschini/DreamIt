@@ -10,6 +10,8 @@ import SwiftUI
 struct DreamCard: View {
     
     @Binding var item: IdeaItemModelView
+    @State private var isRotated = false
+
     
     var body: some View {
         Group {
@@ -17,11 +19,14 @@ struct DreamCard: View {
                 HStack {
                     Button(action: {
                         withAnimation {
+                            self.isRotated.toggle()
                             self.item.liked.toggle()
                         }
                     }) {
                     Image(systemName: self.item.liked ? "hand.thumbsup.fill" : "hand.thumbsup")
                         .modifier(LikeModifier(liked: self.item.liked))
+                        .rotation3DEffect(Angle.degrees(isRotated ? 0 : 360), axis: (x: 0, y: 1, z: 0))
+                        .animation(.easeInOut)
                     }
                     Spacer()
                     Text(self.item.postDate)

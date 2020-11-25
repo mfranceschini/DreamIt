@@ -45,30 +45,40 @@ struct ContentView: View {
                     .padding(.top, 20)
                     
                     VStack(alignment: .center) {
-                        Button("Sign Up") {
-                            withAnimation(.spring(dampingFraction: 0.7)) {
-                                self.isModalPresented = true
-                                self.targetView = TargetView.SignUp;
-                                self.currentHeight = 0.0
-                                self.movingOffset = 0.0
+                        if !self.isModalPresented {
+                            Button("Sign Up") {
+                                withAnimation(.spring(dampingFraction: 0.7)) {
+                                    self.isModalPresented = true
+                                    self.targetView = TargetView.SignUp;
+                                    self.currentHeight = 0.0
+                                    self.movingOffset = 0.0
+                                }
                             }
-                        }
-                        .buttonStyle(SignUpButtonStyle())
-                        
-                        Button("Login") {
-                            withAnimation(.spring(dampingFraction: 0.7)) {
-                                self.isModalPresented = true
-                                self.targetView = TargetView.Login;
-                                self.currentHeight = 0.0
-                                self.movingOffset = 0.0
+                            .buttonStyle(SignUpButtonStyle())
+                            
+                            Button("Login") {
+                                withAnimation(.spring(dampingFraction: 0.7)) {
+                                    self.isModalPresented = true
+                                    self.targetView = TargetView.Login;
+                                    self.currentHeight = 0.0
+                                    self.movingOffset = 0.0
+                                }
                             }
+                            .buttonStyle(LoginButtonStyle())
                         }
-                        .buttonStyle(LoginButtonStyle())
                     }
                     .padding(.bottom, 70)
                 }
                 .blur(radius: self.isModalPresented ? 3.0 : 0.0)
                 .padding()
+                .onTapGesture {
+                    if self.isModalPresented {
+                        withAnimation {
+                            self.isModalPresented = false
+                        }
+                    }
+                }
+                .transition(.move(edge: .top))
                 
                 CustomSheetView(currentHeight: self.$currentHeight, movingOffset: self.$movingOffset, isShowing: self.$isModalPresented, targetView: self.$targetView, isLoggedIn: self.$isLoggedIn)
                     .transition(.move(edge: .bottom))
