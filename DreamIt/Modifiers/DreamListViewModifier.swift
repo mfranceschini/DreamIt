@@ -39,3 +39,16 @@ struct ProfileImageModifier: ViewModifier {
             .padding()
     }
 }
+
+struct NoIdeasLabelModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.title3)
+            .multilineTextAlignment(.center)
+            .foregroundColor(.white)
+            .padding()
+            .padding(.top, 100)
+            .padding(.horizontal, 50)
+            .frame(alignment: .center)
+    }
+}

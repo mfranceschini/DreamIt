@@ -8,18 +8,24 @@
 import SwiftUI
 import UIKit
 
-class LikedIdeasViewController: UIViewController, UITableViewDelegate,  UITableViewDataSource {
-
+class LikedIdeasViewController: UIViewController, UITableViewDelegate,  UITableViewDataSource, UISearchBarDelegate {
+    
     @Environment(\.colorScheme) var colorScheme
+    private var backgroundGradient: [Color] = Constants.background.reversed()
+    @State private var searchText : String = ""
+    var searching = false
+    let searchController = UISearchController(searchResultsController: nil)
+    
     
     let tableview: UITableView = {
         let tv = UITableView()
-        tv.backgroundColor = UIColor.white
+        tv.backgroundColor = UIColor.clear
         tv.separatorColor = UIColor.clear
         tv.translatesAutoresizingMaskIntoConstraints = false
         
         let headerView = Component(frame: .zero)
         headerView.configure(text: "Liked Ideas")
+        
         tv.tableHeaderView = headerView
         tv.tableHeaderView?.backgroundColor = .clear
         
@@ -30,7 +36,7 @@ class LikedIdeasViewController: UIViewController, UITableViewDelegate,  UITableV
         super.viewWillLayoutSubviews()
         updateHeaderViewHeight(for: self.tableview.tableHeaderView)
     }
-
+    
     func updateHeaderViewHeight(for header: UIView?) {
         guard let header = header else { return }
         header.frame.size.height = 200
@@ -39,12 +45,29 @@ class LikedIdeasViewController: UIViewController, UITableViewDelegate,  UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 1
+        searchController.searchResultsUpdater = self
+        // 2
+        searchController.obscuresBackgroundDuringPresentation = false
+        // 3
+        searchController.searchBar.placeholder = "Search Candies"
+        // 4
+        navigationItem.searchController = searchController
+        // 5
+        definesPresentationContext = true
+        searchController.searchBar.delegate = self
+        
+        if self.traitCollection.userInterfaceStyle == .dark {
+            backgroundGradient = backgroundGradient.reversed()
+        }
+        setGradientBackground()
+        
         setupTableView()
     }
     
     func setupTableView() {
         tableview.register(DreamIdeaCell.self, forCellReuseIdentifier: "cellId")
-        
+
         view.addSubview(tableview)
         
         NSLayoutConstraint.activate([
@@ -56,13 +79,14 @@ class LikedIdeasViewController: UIViewController, UITableViewDelegate,  UITableV
         
         tableview.delegate = self
         tableview.dataSource = self
-        self.title = "Liked Ideas"
-        tableview.backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.screenSize.width, height: Constants.screenSize.height))
-        tableview.backgroundColor = colorWithGradient()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if searching {
+            return 2
+        } else {
+            return 10
+        }
     }
     
     func tableView(_ tableView: UITableView, height section: Int) -> Int {
@@ -77,10 +101,6 @@ class LikedIdeasViewController: UIViewController, UITableViewDelegate,  UITableV
         return 1
     }
     
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return "title"
-//    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! DreamIdeaCell
         cell.backgroundColor = UIColor.clear
@@ -88,24 +108,24 @@ class LikedIdeasViewController: UIViewController, UITableViewDelegate,  UITableV
         return cell
     }
     
-    func colorWithGradient() -> UIColor {
-        
-        // create the background layer that will hold the gradient
-        let backgroundGradientLayer = CAGradientLayer()
-        backgroundGradientLayer.frame = CGRect(x: 0, y: 0, width: Constants.screenSize.width, height: Constants.screenSize.height)
-         
-        // we create an array of CG colors from out UIColor array
-        let cgColors: [CGColor] = Constants.background.map({$0.cgColor!})
-        
-        backgroundGradientLayer.colors = cgColors
-        
-        UIGraphicsBeginImageContext(backgroundGradientLayer.bounds.size)
-        backgroundGradientLayer.render(in: UIGraphicsGetCurrentContext()!)
-        let backgroundColorImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-        return UIColor(patternImage: backgroundColorImage)
+    func setGradientBackground() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.view.bounds
+        gradientLayer.colors = backgroundGradient.map({ $0.cgColor! })
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
+    
+    func filterContentForSearchText(_ searchText: String) {
+      
+      tableview.reloadData()
+    }
+}
+
+extension LikedIdeasViewController: UISearchResultsUpdating {
+  func updateSearchResults(for searchController: UISearchController) {
+    let searchBar = searchController.searchBar
+    filterContentForSearchText(searchBar.text!)
+  }
 }
 
 class DreamIdeaCell: UITableViewCell {
@@ -227,9 +247,9 @@ class DreamIdeaCell: UITableViewCell {
 }
 
 class Component: UIView {
-
+    
     let label = UILabel(frame: .zero)
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(label)
@@ -241,13 +261,13 @@ class Component: UIView {
             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16.0),
             label.topAnchor.constraint(equalTo: topAnchor),
             label.bottomAnchor.constraint(equalTo: bottomAnchor),
-            ])
+        ])
     }
-
+    
     func configure(text: String) {
         label.text = text
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

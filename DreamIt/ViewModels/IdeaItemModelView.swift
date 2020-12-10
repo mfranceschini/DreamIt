@@ -23,7 +23,7 @@ struct IdeaItemModelView: Hashable {
         return lhs.title == rhs.title
     }
     
-    private var ideaItem: IdeaItemModel
+    var ideaItem: IdeaItemModel
     private let calendar: Calendar
     
     init(ideaItem: IdeaItemModel, calendar: Calendar = Calendar(identifier: .gregorian)) {

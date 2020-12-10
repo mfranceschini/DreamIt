@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import SystemConfiguration
 
 enum TargetView {
     case SignUp
     case Login
     case None
 }
+
+var flags = SCNetworkReachabilityFlags()
 
 struct ContentView: View {
     
@@ -21,6 +24,17 @@ struct ContentView: View {
     @State private var movingOffset: CGFloat = 0.0
     @State var isLoggedIn = false
     @Environment(\.colorScheme) var colorScheme
+    private let reachability = SCNetworkReachabilityCreateWithName(nil, "www.apple.com")
+    @State var isConnected: Bool = false
+    
+    private func isNetworkReachable(with flags: SCNetworkReachabilityFlags) -> Bool {
+        let isReachable = flags.contains(.reachable)
+        let needsConnections = flags.contains(.connectionRequired)
+        let canConnectAutomatically = flags.contains(.connectionOnDemand) || flags.contains(.connectionOnTraffic)
+        let canConnectWithoutInteraction = canConnectAutomatically && !flags.contains(.interventionRequired)
+        
+        return isReachable && (!needsConnections || canConnectWithoutInteraction)
+    }
     
     var body: some View {
         if isLoggedIn {
@@ -44,30 +58,47 @@ struct ContentView: View {
                     }
                     .padding(.top, 20)
                     
-                    VStack(alignment: .center) {
-                        if !self.isModalPresented {
-                            Button("Sign Up") {
-                                withAnimation(.spring(dampingFraction: 0.7)) {
-                                    self.isModalPresented = true
-                                    self.targetView = TargetView.SignUp;
-                                    self.currentHeight = 0.0
-                                    self.movingOffset = 0.0
+                    // Validate if has internet connection
+                    if self.isConnected {
+                        VStack(alignment: .center) {
+                            if !self.isModalPresented {
+                                Button("Sign Up") {
+                                    withAnimation(.spring(dampingFraction: 0.7)) {
+                                        self.isModalPresented = true
+                                        self.targetView = TargetView.SignUp;
+                                        self.currentHeight = 0.0
+                                        self.movingOffset = 0.0
+                                    }
                                 }
-                            }
-                            .buttonStyle(SignUpButtonStyle())
-                            
-                            Button("Login") {
-                                withAnimation(.spring(dampingFraction: 0.7)) {
-                                    self.isModalPresented = true
-                                    self.targetView = TargetView.Login;
-                                    self.currentHeight = 0.0
-                                    self.movingOffset = 0.0
+                                .buttonStyle(SignUpButtonStyle())
+                                
+                                Button("Login") {
+                                    withAnimation(.spring(dampingFraction: 0.7)) {
+                                        self.isModalPresented = true
+                                        self.targetView = TargetView.Login;
+                                        self.currentHeight = 0.0
+                                        self.movingOffset = 0.0
+                                    }
                                 }
+                                .buttonStyle(LoginButtonStyle())
                             }
-                            .buttonStyle(LoginButtonStyle())
+                        }
+                        .padding(.bottom, 70)
+                    }
+                    else {
+                        VStack {
+                            Text("⚠️")
+                                .font(.system(size: 60))
+                                .shadow(radius: 15)
+                            Text("To use the app is necessary an Internet Connection")
+                                .font(.title3)
+                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(.white)
+                                .padding(.horizontal)
+                            Spacer()
                         }
                     }
-                    .padding(.bottom, 70)
                 }
                 .blur(radius: self.isModalPresented ? 3.0 : 0.0)
                 .padding()
@@ -88,6 +119,13 @@ struct ContentView: View {
             )
             .edgesIgnoringSafeArea(.all)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .onAppear {
+                SCNetworkReachabilityGetFlags(self.reachability!, &flags)
+                self.isConnected = isNetworkReachable(with: flags)
+            }
+            .onTapGesture {
+                self.isConnected = isNetworkReachable(with: flags)
+            }
         }
     }
 }
