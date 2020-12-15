@@ -11,7 +11,9 @@ struct SignUpView: View {
     
     @Binding var movingOffset: CGFloat
     @State private var textTitle = ""
+    @Binding var isLoggedIn: Bool
     @Environment(\.colorScheme) var colorScheme
+    @State var isSetupProfilePresented: Bool = false
     
     var body: some View {
         let phoneRatio = String(format: "%.3f", Constants.screenSize.width / Constants.screenSize.height)
@@ -67,7 +69,7 @@ struct SignUpView: View {
                     Text("- or -")
                         .fontWeight(.bold)
                         .modifier(OrLabelModifier())
-                    Button(action: { }) {
+                    Button(action: { self.isSetupProfilePresented = true }) {
                         Text("Create DreamIt account")
                             .underline()
                             .modifier(LoginDreamItLabelModifier())
@@ -80,12 +82,9 @@ struct SignUpView: View {
         .offset(y: movingOffset )
         .padding(.bottom, isXorAbove ? 60 : 50 )
         .padding(.top, 15)
+        .sheet(isPresented: $isSetupProfilePresented, content: {
+            SetupProfileView(loggedUser: LoggedUserModel(firstName: "", lastName: "", profileType: ProfileTypes.Creator, email: "", country: "", phoneNumber: "", portfolioURL: ""), isLoggedIn: self.$isLoggedIn, isSetupProfilePresented: self.$isSetupProfilePresented)
+        })
     }
     
-}
-
-struct SignUpView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignUpView(movingOffset: .constant(0.0))
-    }
 }

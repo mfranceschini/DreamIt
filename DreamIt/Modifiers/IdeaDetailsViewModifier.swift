@@ -71,7 +71,7 @@ struct LikeButtonStyle: ButtonStyle {
         configuration.label
             .frame(width: 70, height: 15, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             .padding()
-            .font(.system(size: 20))
+            .font(.system(size: 19))
             .foregroundColor(isLiked ? .blue : .black)
             .background(isLiked ? Color.clear : Color.white)
             .cornerRadius(15)
@@ -87,7 +87,7 @@ struct InterestedButtonStyle: ButtonStyle {
         configuration.label
             .frame(width: 170, height: 25, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             .padding()
-            .font(.system(size: 21))
+            .font(.system(size: 20))
             .foregroundColor(.white)
             .background(Color.blue)
             .clipShape(Capsule())

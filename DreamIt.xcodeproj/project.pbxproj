@@ -12,6 +12,7 @@
 		7623B6F725316FE60038E3CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7623B6F625316FE60038E3CC /* Assets.xcassets */; };
 		7623B6FA25316FE60038E3CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7623B6F925316FE60038E3CC /* Preview Assets.xcassets */; };
 		764CEDA02550FC53006B1A54 /* LikedIdeasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CED9F2550FC53006B1A54 /* LikedIdeasViewController.swift */; };
+		76725B4C25885AC4002AE137 /* SetupProfileViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76725B4B25885AC4002AE137 /* SetupProfileViewModifier.swift */; };
 		767F2DA3255E161800638222 /* IdeaItemModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767F2DA2255E161800638222 /* IdeaItemModelView.swift */; };
 		767F2DA6255E20A600638222 /* IdeaDetailsViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767F2DA5255E20A600638222 /* IdeaDetailsViewModifier.swift */; };
 		7688A3A52581CB9400C9F473 /* SetupProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688A3A42581CB9400C9F473 /* SetupProfileView.swift */; };
@@ -22,6 +23,8 @@
 		76ACDB92256765C9000ADF73 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ACDB91256765C9000ADF73 /* Loading.swift */; };
 		76ACDB9525677D60000ADF73 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ACDB9425677D60000ADF73 /* SearchBar.swift */; };
 		76AD4C5525538B1300C1B5C6 /* LikedIdeasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AD4C5425538B1300C1B5C6 /* LikedIdeasView.swift */; };
+		76AF1FAE2588475A0035ACFA /* LoggedUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF1FAD2588475A0035ACFA /* LoggedUserModel.swift */; };
+		76AF1FB225884EBA0035ACFA /* CountryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF1FB125884EBA0035ACFA /* CountryUtils.swift */; };
 		76B28CD72531747600F1A61C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B28CD62531747600F1A61C /* SignUpView.swift */; };
 		76B28CDA253174C300F1A61C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B28CD9253174C300F1A61C /* LoginView.swift */; };
 		76B28CDF25318A9B00F1A61C /* LandingViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B28CDE25318A9B00F1A61C /* LandingViewModifier.swift */; };
@@ -50,6 +53,7 @@
 		7623B6F925316FE60038E3CC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7623B6FB25316FE60038E3CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		764CED9F2550FC53006B1A54 /* LikedIdeasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedIdeasViewController.swift; sourceTree = "<group>"; };
+		76725B4B25885AC4002AE137 /* SetupProfileViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewModifier.swift; sourceTree = "<group>"; };
 		767F2DA2255E161800638222 /* IdeaItemModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaItemModelView.swift; sourceTree = "<group>"; };
 		767F2DA5255E20A600638222 /* IdeaDetailsViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaDetailsViewModifier.swift; sourceTree = "<group>"; };
 		7688A3A42581CB9400C9F473 /* SetupProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileView.swift; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 		76ACDB91256765C9000ADF73 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		76ACDB9425677D60000ADF73 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		76AD4C5425538B1300C1B5C6 /* LikedIdeasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedIdeasView.swift; sourceTree = "<group>"; };
+		76AF1FAD2588475A0035ACFA /* LoggedUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedUserModel.swift; sourceTree = "<group>"; };
+		76AF1FB125884EBA0035ACFA /* CountryUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryUtils.swift; sourceTree = "<group>"; };
 		76B28CD62531747600F1A61C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		76B28CD9253174C300F1A61C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		76B28CDE25318A9B00F1A61C /* LandingViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewModifier.swift; sourceTree = "<group>"; };
@@ -168,6 +174,7 @@
 				76B332A2253E8A7300F2B532 /* DreamListViewModifier.swift */,
 				7696E1D425410F9C00EA94DF /* DreamCardViewModifier.swift */,
 				767F2DA5255E20A600638222 /* IdeaDetailsViewModifier.swift */,
+				76725B4B25885AC4002AE137 /* SetupProfileViewModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -178,6 +185,7 @@
 				7696E1DA25412B7600EA94DF /* TabbarModel.swift */,
 				7696E1DD25412CC700EA94DF /* CategoryModel.swift */,
 				7696E1E02541304300EA94DF /* IdeaItemModel.swift */,
+				76AF1FAD2588475A0035ACFA /* LoggedUserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -186,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				76C98382256365FD000EA3A6 /* Constants.swift */,
+				76AF1FB125884EBA0035ACFA /* CountryUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -286,11 +295,13 @@
 				76E3592B253941010006A641 /* DreamCard.swift in Sources */,
 				76ACDB92256765C9000ADF73 /* Loading.swift in Sources */,
 				76CF26D5255B762100A46A4F /* SheetPresenter.swift in Sources */,
+				76AF1FAE2588475A0035ACFA /* LoggedUserModel.swift in Sources */,
 				76EDE909256E1DB7001DBC4E /* RefreshableScrollView.swift in Sources */,
 				76C98383256365FD000EA3A6 /* Constants.swift in Sources */,
 				7696E1E12541304300EA94DF /* IdeaItemModel.swift in Sources */,
 				76B28CDA253174C300F1A61C /* LoginView.swift in Sources */,
 				7688A3A52581CB9400C9F473 /* SetupProfileView.swift in Sources */,
+				76AF1FB225884EBA0035ACFA /* CountryUtils.swift in Sources */,
 				76E3592E253942AC0006A641 /* CategoryBubble.swift in Sources */,
 				76B28CDF25318A9B00F1A61C /* LandingViewModifier.swift in Sources */,
 				7623B6F325316FE30038E3CC /* DreamItApp.swift in Sources */,
@@ -300,6 +311,7 @@
 				76ACDB9525677D60000ADF73 /* SearchBar.swift in Sources */,
 				7696E1DE25412CC700EA94DF /* CategoryModel.swift in Sources */,
 				76CF26DC255B936000A46A4F /* SplashView.swift in Sources */,
+				76725B4C25885AC4002AE137 /* SetupProfileViewModifier.swift in Sources */,
 				76E359212537E0CF0006A641 /* CloseModalLip.swift in Sources */,
 				76BD6C722554DFCE00E4F392 /* TabbarView.swift in Sources */,
 				76E3591C2537D7A00006A641 /* ModalViewModifier.swift in Sources */,
