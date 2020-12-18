@@ -18,16 +18,16 @@ struct IdeaDetailsView: View {
                     CloseModalLip()
                         .padding()
                     HStack() {
-                        Image(uiImage: ideaData.thumbnail)
+                        Image(uiImage: self.ideaData.thumbnail)
                             .resizable()
                             .frame(width: 90, height: 90, alignment: .leading)
                         VStack(alignment: .leading) {
-                            Text(ideaData.title)
+                            Text(self.ideaData.title)
                                 .fontWeight(.bold)
                                 .modifier(TitleModifier())
                                 .frame(width: Constants.screenSize.width * 0.6, alignment: .leading)
-                            Text(ideaData.author)
-                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            Text(self.ideaData.author)
+                                .fontWeight(.bold)
                                 .modifier(AuthorModifier())
                                 .frame(width: Constants.screenSize.width * 0.6, alignment: .leading)
                         }
@@ -35,13 +35,13 @@ struct IdeaDetailsView: View {
                     .padding(.top)
                     
                     HStack {
-                        Text(ideaData.impressions)
+                        Text(self.ideaData.impressions)
                             .modifier(ImpressionsLabelModifier())
                             .padding(.leading, 30)
                         Image(systemName: "eye.fill")
                             .foregroundColor(Color(UIColor.lightGray))
                         Spacer()
-                        Text(ideaData.postDate)
+                        Text(self.ideaData.postDate)
                             .modifier(PostDateLabelModifier())
                             .padding(.trailing, 30)
                         
@@ -130,12 +130,13 @@ struct IdeaDetailsView: View {
                 }
 
                 VStack {
-                    Button(self.ideaData.liked ? "Liked" : "Like", action: {
+                    Button(self.ideaData.liked == true ? "Liked" : "Like", action: {
                         withAnimation {
-                            self.ideaData.liked = !self.ideaData.liked
+                            self.ideaData.liked.toggle()
                         }
                     })
                     .buttonStyle(LikeButtonStyle(isLiked: self.ideaData.liked))
+
                     
                     Button("I'm interested", action: {})
                         .buttonStyle(InterestedButtonStyle())

@@ -9,13 +9,26 @@ import SwiftUI
 
 struct SetupProfileView: View {
     
+    var sortedCountries = CountryUtils.countries.sorted()
     @State var loggedUser: LoggedUserModel
     @State private var selectedCountry = 0
     @State private var selectedProfileType = 0
     @State private var setupProgress = 0.0
+    @State private var isCountryPresented: Bool = false
     @Binding var isLoggedIn: Bool
     @Binding var isSetupProfilePresented: Bool
-    @State private var isCountryPresented: Bool = false
+    
+    func validateForm() -> Bool {
+        if (!self.loggedUser.country.isEmpty &&
+                !self.loggedUser.email.isEmpty &&
+                !self.loggedUser.firstName.isEmpty &&
+                !self.loggedUser.lastName.isEmpty &&
+                !self.loggedUser.phoneNumber.isEmpty &&
+                !self.loggedUser.portfolioURL.isEmpty) {
+            return true
+        }
+        return false
+    }
     
     var body: some View {
         NavigationView {
@@ -23,28 +36,32 @@ struct SetupProfileView: View {
                 VStack {
                     VStack(alignment: .leading) {
                         Text("Profile Type")
-                            .foregroundColor(Color(UIColor.placeholderText))
+                            .foregroundColor(.gray)
                             .frame(alignment: .leading)
-                        Picker(selection: $selectedProfileType, label: Text("Profile Type")) {
+                        Picker(selection: self.$selectedProfileType, label: Text("Profile Type")) {
                             Text(ProfileTypes.Creator.rawValue).tag(0)
                             Text(ProfileTypes.Implementer.rawValue).tag(1)
                         }
                         .pickerStyle(SegmentedPickerStyle())
                         .padding(.bottom)
                     }
-                    TextField("First Name", text: $loggedUser.firstName)
+                    TextField("First Name", text: self.$loggedUser.firstName)
+                        .disableAutocorrection(true)
                     Divider()
-                    TextField("Last Name", text: $loggedUser.lastName)
+                    TextField("Last Name", text: self.$loggedUser.lastName)
+                        .disableAutocorrection(true)
                     Divider()
-                    TextField("Email", text: $loggedUser.email)
+                    TextField("Email", text: self.$loggedUser.email)
                         .keyboardType(.emailAddress)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
                     Divider()
                     
                     HStack {
                         Text("Country")
                             .foregroundColor(Color(UIColor.placeholderText))
                         Spacer()
-                        Text(CountryUtils.countries[selectedCountry])
+                        Text(sortedCountries[selectedCountry])
                     }
                     .onTapGesture {
                         withAnimation {
@@ -53,8 +70,8 @@ struct SetupProfileView: View {
                     }
                     if isCountryPresented {
                         Picker(selection: $selectedCountry, label: Text("")) {
-                            ForEach(0 ..< CountryUtils.countries.count) {
-                                Text(CountryUtils.countries[$0]).tag($0)
+                            ForEach(0 ..< sortedCountries.count) {
+                                Text(sortedCountries[$0]).tag($0)
                             }
                         }
                         .onTapGesture {
@@ -66,11 +83,14 @@ struct SetupProfileView: View {
                     Divider()
                 }
                 VStack {
-                    TextField("Phone Number", text: $loggedUser.phoneNumber)
+                    TextField("Phone Number", text: self.$loggedUser.phoneNumber)
                         .keyboardType(.phonePad)
+                        .disableAutocorrection(true)
                     Divider()
-                    TextField("Portfolio URL", text: $loggedUser.portfolioURL)
+                    TextField("Portfolio URL", text: self.$loggedUser.portfolioURL)
                         .keyboardType(.URL)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
                 }
                 VStack {
                     Spacer()
@@ -81,14 +101,12 @@ struct SetupProfileView: View {
                         }
                     })
                     .buttonStyle(SaveButtonStyle())
+                    .disabled(self.validateForm())
                 }
             }
             .padding()
             .padding(.top)
             .navigationTitle("Profile Setup")
-            .onTapGesture {
-                UIApplication.shared.endEditing()
-            }
         }
     }
 }

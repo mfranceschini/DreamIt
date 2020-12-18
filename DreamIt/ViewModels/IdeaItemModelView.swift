@@ -18,7 +18,10 @@ extension Double {
     }
 }
 
-struct IdeaItemModelView: Hashable {
+struct IdeaItemModelView: Hashable, Identifiable {
+    
+    let id = UUID()
+    
     static func == (lhs: IdeaItemModelView, rhs: IdeaItemModelView) -> Bool {
         return lhs.title == rhs.title
     }

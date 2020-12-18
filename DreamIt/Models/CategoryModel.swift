@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CategoryModel {
+struct CategoryModel: Equatable {
     var id: Int
     var name: String
     var selected: Bool

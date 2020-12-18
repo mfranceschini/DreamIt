@@ -79,21 +79,21 @@ struct IdeaListView: View {
                         
                         ScrollView([.horizontal], showsIndicators: false) {
                             HStack(spacing: 15) {
-                                CategoryBubble(categories: $categories, ideaList: $ideasList)
+                                CategoryBubble(categories: $categories, ideaList: $ideasList, loading: $loading)
                             }
                             .frame(height: 50)
                             .padding(.horizontal, 50)
                         }
                     }
                     
-                    if self.ideasList.count > 0 {
-                        ForEach(self.ideasList.indices.filter { index in
+                    if ideasList.count > 0 {
+                        ForEach(ideasList.indices.filter { index in
                             (self.searchText.isEmpty ? true :
-                                self.ideasList[index].title.lowercased().contains(self.searchText.lowercased()) ||
-                                self.ideasList[index].author.lowercased().contains(self.searchText.lowercased()))
+                                ideasList[index].title.lowercased().contains(self.searchText.lowercased()) ||
+                                ideasList[index].author.lowercased().contains(self.searchText.lowercased()))
                         }, id: \.self) { ideaIndex in
                             DreamCard(item: $ideasList[ideaIndex])
-                                .onTapGesture { self.ideaDetailsPresented = true }
+                                .onTapGesture { ideaDetailsPresented = true }
                                 .scaleEffect(scale)
                                 .sheet(
                                     isPresented: $ideaDetailsPresented,
@@ -125,9 +125,3 @@ struct IdeaListView: View {
     }
     
 }
-
-//struct DreamListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        IdeaListView()
-//    }
-//}

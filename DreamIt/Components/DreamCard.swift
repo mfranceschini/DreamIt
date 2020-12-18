@@ -23,8 +23,8 @@ struct DreamCard: View {
                             self.item.liked.toggle()
                         }
                     }) {
-                    Image(systemName: self.item.liked ? "hand.thumbsup.fill" : "hand.thumbsup")
-                        .modifier(LikeModifier(liked: self.item.liked))
+                        Image(systemName: self.item.liked ? "hand.thumbsup.fill" : "hand.thumbsup")
+                            .modifier(LikeModifier(liked: self.item.liked))
                         .rotation3DEffect(Angle.degrees(isRotated ? 0 : 360), axis: (x: 0, y: 1, z: 0))
                         .animation(.easeInOut)
                     }
@@ -46,7 +46,7 @@ struct DreamCard: View {
                             .frame(alignment: .leading)
                             .modifier(DreamTitleModifier())
                         Text("by \(self.item.author)")
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            .fontWeight(.bold)
                             .frame(alignment: .leading)
                             .modifier(DreamAuthorModifier())
                     }
@@ -56,7 +56,7 @@ struct DreamCard: View {
                 HStack {
                     Spacer()
                     Text(self.item.impressions.description)
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        .fontWeight(.bold)
                         .modifier(DreamImpressionsModifier())
                     Image(systemName: "eye.fill")
                         .foregroundColor(Color(UIColor.lightGray))
@@ -69,9 +69,3 @@ struct DreamCard: View {
     }
     
 }
-
-//struct DreamCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DreamCard(item: IdeaItemModelView(ideaItem: IdeaItemModel(title: "Mobile game", author: "Johnny Deep", createdAt: Date(), impressions: 1000, liked: false, thumbnail: UIImage(named: "test")!)))
-//    }
-//}
