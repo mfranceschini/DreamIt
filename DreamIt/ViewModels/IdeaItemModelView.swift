@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Foundation
+import Combine
 
 extension Double {
     func reduceScale(to places: Int) -> Double {
@@ -18,7 +19,7 @@ extension Double {
     }
 }
 
-struct IdeaItemModelView: Hashable, Identifiable {
+struct IdeaItemModelView: Identifiable, Hashable {
     
     let id = UUID()
     

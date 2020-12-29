@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 struct IdeaItemModel: Hashable {
+    var id: String?
     var title: String
     var author: String
     var createdAt: Date

@@ -43,8 +43,34 @@ struct IdeaListView: View {
     @State private var loading: Bool = true
     @State private var scale: CGFloat = 1
     @State private var searchText : String = ""
+    @State private var selectedIdea: IdeaItemModelView?
     @Environment(\.colorScheme) var colorScheme
     @Binding var selectedTab: String
+    @State var appliedFilters: [CategoryModel] = []
+    
+    private func reloadList(_ waitTime: Double) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + waitTime) {
+            self.loading = false
+        }
+    }
+    
+    private func applyFilter(_ filters: [CategoryModel]) {
+        let currentFilters = filters.filter { $0.selected }
+        let filteredList = ideasList.filter { idea in currentFilters.contains { $0.id == idea.category} }
+        self.loading = true
+        print(filteredList)
+        //        ideasList = filteredList
+        reloadList(4.0)
+    }
+    
+    private func applySearchText(_ text: String) {
+        print("Searching for",text)
+//        ideasList.filter { ideaItem in
+//            (self.searchText.isEmpty ? true :
+//                ideaItem.title.lowercased().contains(self.searchText.lowercased()) ||
+//                ideaItem.author.lowercased().contains(self.searchText.lowercased()))
+//        }
+    }
     
     var body: some View {
         VStack {
@@ -64,6 +90,7 @@ struct IdeaListView: View {
             .frame(width: Constants.screenSize.width)
             .padding([.top, .leading, .trailing])
             
+            
             ScrollView {
                 if loading {
                     Loading()
@@ -73,13 +100,15 @@ struct IdeaListView: View {
                 else {
                     SearchBar(text: $searchText)
                         .frame(width: Constants.screenSize.width * 0.95, alignment: .center)
+                        .onChange(of: searchText, perform: applySearchText)
                     Group {
                         Text("Categories")
                             .modifier(CategoriesTitleModifier())
                         
                         ScrollView([.horizontal], showsIndicators: false) {
                             HStack(spacing: 15) {
-                                CategoryBubble(categories: $categories, ideaList: $ideasList, loading: $loading)
+                                CategoryBubble(categories: $categories)
+                                    .onChange(of: categories, perform: applyFilter)
                             }
                             .frame(height: 50)
                             .padding(.horizontal, 50)
@@ -88,16 +117,27 @@ struct IdeaListView: View {
                     
                     if ideasList.count > 0 {
                         ForEach(ideasList.indices.filter { index in
-                            (self.searchText.isEmpty ? true :
-                                ideasList[index].title.lowercased().contains(self.searchText.lowercased()) ||
-                                ideasList[index].author.lowercased().contains(self.searchText.lowercased()))
-                        }, id: \.self) { ideaIndex in
+                                                    (self.searchText.isEmpty ? true :
+                                                        ideasList[index].title.lowercased().contains(self.searchText.lowercased()) ||
+                                                        ideasList[index].author.lowercased().contains(self.searchText.lowercased()))
+                                                }, id: \.self) { ideaIndex in
                             DreamCard(item: $ideasList[ideaIndex])
-                                .onTapGesture { ideaDetailsPresented = true }
+                                .onTapGesture {
+                                    self.selectedIdea = ideasList[ideaIndex]
+                                    ideaDetailsPresented = true
+                                }
                                 .scaleEffect(scale)
                                 .sheet(
                                     isPresented: $ideaDetailsPresented,
-                                    content: { IdeaDetailsView(ideaData: $ideasList[ideaIndex]) }
+                                    onDismiss: {
+                                        withAnimation {
+                                            self.loading = true
+                                            reloadList(2.0)
+                                        }
+                                    },
+                                    content: {
+                                        IdeaDetailsView(ideaData: Binding<IdeaItemModelView>(self.$selectedIdea)!)
+                                    }
                                 )
                         }
                     }
@@ -109,9 +149,8 @@ struct IdeaListView: View {
                 
             }
             .onAppear() {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
-                    self.loading = false
-                }
+                reloadList(4.0)
+                appliedFilters = categories.filter { $0.selected }
             }
             .onTapGesture {
                 UIApplication.shared.endEditing()

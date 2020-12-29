@@ -1,0 +1,6 @@
+framework module Pods_DreamIt {
+  umbrella header "Pods-DreamIt-umbrella.h"
+
+  export *
+  module * { export * }
+}

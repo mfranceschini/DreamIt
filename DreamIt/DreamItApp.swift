@@ -6,9 +6,18 @@
 //
 
 import SwiftUI
+import UIKit
+import Firebase
 
 @main
 struct DreamItApp: App {
+    
+    init() {
+        print("configure")
+        FirebaseApp.configure()
+        Firestore.firestore()
+    }
+    
     var body: some Scene {
         WindowGroup {
             SplashView()

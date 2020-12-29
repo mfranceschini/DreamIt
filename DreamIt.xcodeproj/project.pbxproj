@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E48A48CEE70729E7D6B0E9C /* Pods_DreamIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438EB6AC2B838AEC5C51C4B3 /* Pods_DreamIt.framework */; };
+		76004C66259AE758007ABE55 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76004C65259AE758007ABE55 /* GoogleService-Info.plist */; };
 		7623B6F325316FE30038E3CC /* DreamItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623B6F225316FE30038E3CC /* DreamItApp.swift */; };
 		7623B6F525316FE30038E3CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623B6F425316FE30038E3CC /* ContentView.swift */; };
 		7623B6F725316FE60038E3CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7623B6F625316FE60038E3CC /* Assets.xcassets */; };
@@ -34,7 +36,6 @@
 		76CF26D5255B762100A46A4F /* SheetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF26D4255B762100A46A4F /* SheetPresenter.swift */; };
 		76CF26D8255B8B5900A46A4F /* IdeaDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF26D7255B8B5900A46A4F /* IdeaDetailsView.swift */; };
 		76CF26DC255B936000A46A4F /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF26DB255B936000A46A4F /* SplashView.swift */; };
-		76D7A73225772271003E418F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76D7A73125772271003E418F /* MainStoryboard.storyboard */; };
 		76E359162537B83C0006A641 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E359152537B83B0006A641 /* SheetView.swift */; };
 		76E359192537B8DE0006A641 /* CustomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E359182537B8DE0006A641 /* CustomSheetView.swift */; };
 		76E3591C2537D7A00006A641 /* ModalViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3591B2537D7A00006A641 /* ModalViewModifier.swift */; };
@@ -46,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		438EB6AC2B838AEC5C51C4B3 /* Pods_DreamIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DreamIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76004C65259AE758007ABE55 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		7623B6EF25316FE30038E3CC /* DreamIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7623B6F225316FE30038E3CC /* DreamItApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamItApp.swift; sourceTree = "<group>"; };
 		7623B6F425316FE30038E3CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,7 +78,6 @@
 		76CF26D4255B762100A46A4F /* SheetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPresenter.swift; sourceTree = "<group>"; };
 		76CF26D7255B8B5900A46A4F /* IdeaDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaDetailsView.swift; sourceTree = "<group>"; };
 		76CF26DB255B936000A46A4F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
-		76D7A73125772271003E418F /* MainStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		76E359152537B83B0006A641 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 		76E359182537B8DE0006A641 /* CustomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSheetView.swift; sourceTree = "<group>"; };
 		76E3591B2537D7A00006A641 /* ModalViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewModifier.swift; sourceTree = "<group>"; };
@@ -84,6 +86,8 @@
 		76E3592A253941010006A641 /* DreamCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamCard.swift; sourceTree = "<group>"; };
 		76E3592D253942AC0006A641 /* CategoryBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBubble.swift; sourceTree = "<group>"; };
 		76EDE908256E1DB7001DBC4E /* RefreshableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableScrollView.swift; sourceTree = "<group>"; };
+		FB0522F405FF4C60EFFC4070 /* Pods-DreamIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamIt.debug.xcconfig"; path = "Target Support Files/Pods-DreamIt/Pods-DreamIt.debug.xcconfig"; sourceTree = "<group>"; };
+		FFFF58189A0CA4E676927972 /* Pods-DreamIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamIt.release.xcconfig"; path = "Target Support Files/Pods-DreamIt/Pods-DreamIt.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,18 +95,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E48A48CEE70729E7D6B0E9C /* Pods_DreamIt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3EC6CC991EC0C1FBF46D6CEF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				438EB6AC2B838AEC5C51C4B3 /* Pods_DreamIt.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7623B6E625316FE30038E3CC = {
 			isa = PBXGroup;
 			children = (
-				76D7A73125772271003E418F /* MainStoryboard.storyboard */,
 				7623B6F125316FE30038E3CC /* DreamIt */,
 				7623B6F025316FE30038E3CC /* Products */,
+				7C1C58E66F988088FEB6D85A /* Pods */,
+				3EC6CC991EC0C1FBF46D6CEF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +131,7 @@
 		7623B6F125316FE30038E3CC /* DreamIt */ = {
 			isa = PBXGroup;
 			children = (
+				76F0E556258D9DEF0017CD9B /* Repositories */,
 				76C98381256365E9000EA3A6 /* Utils */,
 				767F2D9C255E14E400638222 /* ViewModels */,
 				76E3591F2537E0A90006A641 /* Components */,
@@ -126,6 +141,7 @@
 				76B28CD4253172CA00F1A61C /* Views */,
 				7623B6F625316FE60038E3CC /* Assets.xcassets */,
 				7623B6FB25316FE60038E3CC /* Info.plist */,
+				76004C65259AE758007ABE55 /* GoogleService-Info.plist */,
 				7623B6F825316FE60038E3CC /* Preview Content */,
 			);
 			path = DreamIt;
@@ -213,6 +229,22 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		76F0E556258D9DEF0017CD9B /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		7C1C58E66F988088FEB6D85A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FB0522F405FF4C60EFFC4070 /* Pods-DreamIt.debug.xcconfig */,
+				FFFF58189A0CA4E676927972 /* Pods-DreamIt.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -220,9 +252,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7623B6FE25316FE60038E3CC /* Build configuration list for PBXNativeTarget "DreamIt" */;
 			buildPhases = (
+				2076BB4390E610724653646E /* [CP] Check Pods Manifest.lock */,
 				7623B6EB25316FE30038E3CC /* Sources */,
 				7623B6EC25316FE30038E3CC /* Frameworks */,
 				7623B6ED25316FE30038E3CC /* Resources */,
+				64CA735561D04DFCA8DB9DD9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -270,13 +304,55 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76D7A73225772271003E418F /* MainStoryboard.storyboard in Resources */,
 				7623B6FA25316FE60038E3CC /* Preview Assets.xcassets in Resources */,
 				7623B6F725316FE60038E3CC /* Assets.xcassets in Resources */,
+				76004C66259AE758007ABE55 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2076BB4390E610724653646E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DreamIt-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		64CA735561D04DFCA8DB9DD9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DreamIt/Pods-DreamIt-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DreamIt/Pods-DreamIt-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DreamIt/Pods-DreamIt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7623B6EB25316FE30038E3CC /* Sources */ = {
@@ -440,6 +516,7 @@
 		};
 		7623B6FF25316FE60038E3CC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB0522F405FF4C60EFFC4070 /* Pods-DreamIt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -462,6 +539,7 @@
 		};
 		7623B70025316FE60038E3CC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFFF58189A0CA4E676927972 /* Pods-DreamIt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

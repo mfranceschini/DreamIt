@@ -10,6 +10,7 @@ import SwiftUI
 struct IdeaDetailsView: View {
     
     @Binding var ideaData: IdeaItemModelView
+    @State var isLiked: Bool = false
     
     var body: some View {
         VStack {
@@ -130,12 +131,15 @@ struct IdeaDetailsView: View {
                 }
 
                 VStack {
-                    Button(self.ideaData.liked == true ? "Liked" : "Like", action: {
+                    Button(action: {
                         withAnimation {
                             self.ideaData.liked.toggle()
+                            self.isLiked = self.ideaData.liked
                         }
-                    })
-                    .buttonStyle(LikeButtonStyle(isLiked: self.ideaData.liked))
+                    }) {
+                        Text(isLiked ? "Liked" : "Like")
+                    }
+                    .buttonStyle(LikeButtonStyle(isLiked: isLiked))
 
                     
                     Button("I'm interested", action: {})
@@ -144,12 +148,8 @@ struct IdeaDetailsView: View {
                 .padding(.bottom)
             }
         }
-        
+        .onAppear {
+            self.isLiked = self.ideaData.liked
+        }
     }
 }
-
-//struct IdeaDetailsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        IdeaDetailsView(ideaData: IdeaItemModelView(ideaItem: IdeaItemModel(title: "Mobile game", author: "Johnny Deep", createdAt: Date(), impressions: 1000, liked: false, thumbnail: UIImage(named: "test")!)))
-//    }
-//}
