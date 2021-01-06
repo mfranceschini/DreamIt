@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SaveButtonStyle: ButtonStyle {
+    var validated: Bool
     @Environment(\.colorScheme) var colorScheme
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
@@ -15,7 +16,7 @@ struct SaveButtonStyle: ButtonStyle {
             .padding()
             .font(.system(size: 20))
             .foregroundColor(.white)
-            .background(Color.blue)
+            .background(validated ? Color.blue : Color.gray)
             .clipShape(Capsule())
             .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
             .shadow(color: Color.gray,
