@@ -129,31 +129,31 @@ struct CreateUserView: View {
     }
     
     private var validated: Bool {
-        !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty
+        !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty && password == confirmPassword
     }
     
-    private func submitForm() -> (hasSucceeded: Bool, message: String?) {
-        var hasSucceeded = true
-        var message: String?
+    private func submitForm() {
         
         if !isValidEmail(email) {
-            hasSucceeded = false
-            message = "The email entered is not valid."
-            return (hasSucceeded, message)
+            errorMessage = "The email entered is not valid."
+            isAlertPresented = true
         }
-        if !isValidPassword(password) || !isValidPassword(confirmPassword) || password != confirmPassword {
-            hasSucceeded = false
-            message = "The password entered does not meet the requirements."
-            return (hasSucceeded, message)
+        else if (!isValidPassword(password) || !isValidPassword(confirmPassword) || (password != confirmPassword)) {
+            errorMessage = "The password entered does not meet the requirements."
+            isAlertPresented = true
         }
         
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            if error != nil {
-                hasSucceeded = false
-                print(error!)
+            if authResult != nil {
+                loading.toggle()
+                isSetupProfilePresented = true
+            }
+            else if error != nil {
+                errorMessage = "The email entered is already in use."
+                isAlertPresented = true
+                loading.toggle()
             }
         }
-        return (hasSucceeded, message)
     }
     
     var body: some View {
@@ -176,7 +176,7 @@ struct CreateUserView: View {
                         TextField("E-mail", text: self.$email)
                             .keyboardType(.emailAddress)
                             .disableAutocorrection(true)
-                            .autocapitalization(UITextAutocapitalizationType.none)
+                            .autocapitalization(.none)
                         SecureField("Password", text: self.$password)
                         SecureField("Confirm Password", text: self.$confirmPassword)
                     }
@@ -197,18 +197,7 @@ struct CreateUserView: View {
                     Button("Create", action: {
                         withAnimation {
                             loading.toggle()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                                let result = submitForm()
-                                loading.toggle()
-                                if result.hasSucceeded {
-                                    isSetupProfilePresented = true
-                                    isCreateUserPresented = false
-                                }
-                                else {
-                                    errorMessage = result.message!
-                                    isAlertPresented = true
-                                }
-                            }
+                            submitForm()
                         }
                     })
                     .buttonStyle(SaveButtonStyle(validated: validated))

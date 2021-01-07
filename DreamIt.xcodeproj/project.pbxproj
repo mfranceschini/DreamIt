@@ -13,6 +13,7 @@
 		7623B6F525316FE30038E3CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623B6F425316FE30038E3CC /* ContentView.swift */; };
 		7623B6F725316FE60038E3CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7623B6F625316FE60038E3CC /* Assets.xcassets */; };
 		7623B6FA25316FE60038E3CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7623B6F925316FE60038E3CC /* Preview Assets.xcassets */; };
+		763E140525A6BE0000ACAEF7 /* FunctionsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763E140425A6BE0000ACAEF7 /* FunctionsUtils.swift */; };
 		764CEDA02550FC53006B1A54 /* LikedIdeasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CED9F2550FC53006B1A54 /* LikedIdeasViewController.swift */; };
 		76725B4C25885AC4002AE137 /* SetupProfileViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76725B4B25885AC4002AE137 /* SetupProfileViewModifier.swift */; };
 		767F2DA3255E161800638222 /* IdeaItemModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767F2DA2255E161800638222 /* IdeaItemModelView.swift */; };
@@ -55,6 +56,7 @@
 		7623B6F625316FE60038E3CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7623B6F925316FE60038E3CC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7623B6FB25316FE60038E3CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		763E140425A6BE0000ACAEF7 /* FunctionsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsUtils.swift; sourceTree = "<group>"; };
 		764CED9F2550FC53006B1A54 /* LikedIdeasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedIdeasViewController.swift; sourceTree = "<group>"; };
 		76725B4B25885AC4002AE137 /* SetupProfileViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewModifier.swift; sourceTree = "<group>"; };
 		767F2DA2255E161800638222 /* IdeaItemModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaItemModelView.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			children = (
 				76C98382256365FD000EA3A6 /* Constants.swift */,
 				76AF1FB125884EBA0035ACFA /* CountryUtils.swift */,
+				763E140425A6BE0000ACAEF7 /* FunctionsUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				76B28CDA253174C300F1A61C /* LoginView.swift in Sources */,
 				7688A3A52581CB9400C9F473 /* SetupProfileView.swift in Sources */,
 				76AF1FB225884EBA0035ACFA /* CountryUtils.swift in Sources */,
+				763E140525A6BE0000ACAEF7 /* FunctionsUtils.swift in Sources */,
 				76E3592E253942AC0006A641 /* CategoryBubble.swift in Sources */,
 				76B28CDF25318A9B00F1A61C /* LandingViewModifier.swift in Sources */,
 				7623B6F325316FE30038E3CC /* DreamItApp.swift in Sources */,

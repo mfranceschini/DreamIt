@@ -11,12 +11,13 @@ struct CountryUtils {
     
     //Countries available to choose when creating profile
     static let countries = [
-        "United States",
-        "Canada",
-        "Brazil",
-        "Mexico",
-        "United Kingdom"
+        "United States": "+X (XXX) XXX-XXXX",
+        "Canada": "+X (XXX) XXX-XXXX",
+        "Brazil": "+XX (XX) XXXXX-XXXX",
+        "Mexico": "+X (XXX) XXX-XXXX",
+        "United Kingdom": "+X (XXX) XXX-XXXX"
     ]
+    
     
     static let countryDictionary  = ["AF":"93","AL":"355","DZ":"213","US":"1",
                                      "AD":"376","AO":"244","AI":"1","AG":"1","AR":"54",
