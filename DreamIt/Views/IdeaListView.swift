@@ -65,11 +65,11 @@ struct IdeaListView: View {
     
     private func applySearchText(_ text: String) {
         print("Searching for",text)
-//        ideasList.filter { ideaItem in
-//            (self.searchText.isEmpty ? true :
-//                ideaItem.title.lowercased().contains(self.searchText.lowercased()) ||
-//                ideaItem.author.lowercased().contains(self.searchText.lowercased()))
-//        }
+        //        ideasList.filter { ideaItem in
+        //            (self.searchText.isEmpty ? true :
+        //                ideaItem.title.lowercased().contains(self.searchText.lowercased()) ||
+        //                ideaItem.author.lowercased().contains(self.searchText.lowercased()))
+        //        }
     }
     
     var body: some View {
@@ -89,7 +89,6 @@ struct IdeaListView: View {
             }
             .frame(width: Constants.screenSize.width)
             .padding([.top, .leading, .trailing])
-            
             
             ScrollView {
                 if loading {
@@ -117,10 +116,10 @@ struct IdeaListView: View {
                     
                     if ideasList.count > 0 {
                         ForEach(ideasList.indices.filter { index in
-                                                    (self.searchText.isEmpty ? true :
-                                                        ideasList[index].title.lowercased().contains(self.searchText.lowercased()) ||
-                                                        ideasList[index].author.lowercased().contains(self.searchText.lowercased()))
-                                                }, id: \.self) { ideaIndex in
+                            (self.searchText.isEmpty ? true :
+                                ideasList[index].title.lowercased().contains(self.searchText.lowercased()) ||
+                                ideasList[index].author.lowercased().contains(self.searchText.lowercased()))
+                        }, id: \.self) { ideaIndex in
                             DreamCard(item: $ideasList[ideaIndex])
                                 .onTapGesture {
                                     self.selectedIdea = ideasList[ideaIndex]

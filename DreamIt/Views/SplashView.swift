@@ -52,7 +52,7 @@ struct SplashView: View {
                         .fill(LinearGradient(gradient: Gradient(colors: colorScheme == .dark ? background2 : background1), startPoint: UnitPoint(x: 1, y: 1), endPoint: UnitPoint(x: 0, y: 0)))
                         .opacity(self.firstPlane ? 0 : 1)
                     VStack(alignment: .center) {
-                        Image("test")
+                        Image("DreamItLogo_inApp")
                             .resizable()
                             .modifier(AppLogoStyle())
                         Text("DreamIt")

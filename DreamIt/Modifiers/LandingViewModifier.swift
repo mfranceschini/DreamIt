@@ -44,7 +44,7 @@ struct LandingViewTitleStyle: ViewModifier {
         content
             .font(.largeTitle)
             .lineLimit(nil)
-            .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
+            .foregroundColor(Color.white)
     }
 }
 

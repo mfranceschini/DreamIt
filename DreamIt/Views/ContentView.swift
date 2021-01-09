@@ -47,7 +47,7 @@ struct ContentView: View {
                     ZStack(alignment: .top) {
                         Color.clear
                         VStack(alignment: .center) {
-                            Image("test")
+                            Image("DreamItLogo_inApp")
                                 .resizable()
                                 .modifier(AppLogoStyle())
                             Text("DreamIt")
