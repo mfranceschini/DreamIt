@@ -15,6 +15,9 @@
 		7623B6FA25316FE60038E3CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7623B6F925316FE60038E3CC /* Preview Assets.xcassets */; };
 		763E140525A6BE0000ACAEF7 /* FunctionsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763E140425A6BE0000ACAEF7 /* FunctionsUtils.swift */; };
 		764CEDA02550FC53006B1A54 /* LikedIdeasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CED9F2550FC53006B1A54 /* LikedIdeasViewController.swift */; };
+		764F96B125AE8A99008A0074 /* LikedIdeasStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 764F96B025AE8A99008A0074 /* LikedIdeasStoryboard.storyboard */; };
+		764F96B825AE914B008A0074 /* LikedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764F96B725AE914B008A0074 /* LikedViewController.swift */; };
+		764F96BB25AE938F008A0074 /* LikedIdeaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764F96BA25AE938F008A0074 /* LikedIdeaCell.swift */; };
 		76725B4C25885AC4002AE137 /* SetupProfileViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76725B4B25885AC4002AE137 /* SetupProfileViewModifier.swift */; };
 		767F2DA3255E161800638222 /* IdeaItemModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767F2DA2255E161800638222 /* IdeaItemModelView.swift */; };
 		767F2DA6255E20A600638222 /* IdeaDetailsViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767F2DA5255E20A600638222 /* IdeaDetailsViewModifier.swift */; };
@@ -59,6 +62,9 @@
 		7623B6FB25316FE60038E3CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		763E140425A6BE0000ACAEF7 /* FunctionsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsUtils.swift; sourceTree = "<group>"; };
 		764CED9F2550FC53006B1A54 /* LikedIdeasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedIdeasViewController.swift; sourceTree = "<group>"; };
+		764F96B025AE8A99008A0074 /* LikedIdeasStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LikedIdeasStoryboard.storyboard; sourceTree = "<group>"; };
+		764F96B725AE914B008A0074 /* LikedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedViewController.swift; sourceTree = "<group>"; };
+		764F96BA25AE938F008A0074 /* LikedIdeaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedIdeaCell.swift; sourceTree = "<group>"; };
 		76725B4B25885AC4002AE137 /* SetupProfileViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewModifier.swift; sourceTree = "<group>"; };
 		767F2DA2255E161800638222 /* IdeaItemModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaItemModelView.swift; sourceTree = "<group>"; };
 		767F2DA5255E20A600638222 /* IdeaDetailsViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaDetailsViewModifier.swift; sourceTree = "<group>"; };
@@ -171,18 +177,21 @@
 			isa = PBXGroup;
 			children = (
 				7623B6F425316FE30038E3CC /* ContentView.swift */,
+				764CED9F2550FC53006B1A54 /* LikedIdeasViewController.swift */,
+				76AD4C5425538B1300C1B5C6 /* LikedIdeasView.swift */,
+				764F96B025AE8A99008A0074 /* LikedIdeasStoryboard.storyboard */,
+				76BD6C712554DFCE00E4F392 /* TabbarView.swift */,
+				76E359272539232A0006A641 /* IdeaListView.swift */,
 				76B28CD62531747600F1A61C /* SignUpView.swift */,
 				76B28CD9253174C300F1A61C /* LoginView.swift */,
 				76E359152537B83B0006A641 /* SheetView.swift */,
 				76E359182537B8DE0006A641 /* CustomSheetView.swift */,
-				76E359272539232A0006A641 /* IdeaListView.swift */,
-				764CED9F2550FC53006B1A54 /* LikedIdeasViewController.swift */,
-				76AD4C5425538B1300C1B5C6 /* LikedIdeasView.swift */,
-				76BD6C712554DFCE00E4F392 /* TabbarView.swift */,
-				76CF26D7255B8B5900A46A4F /* IdeaDetailsView.swift */,
-				76CF26DB255B936000A46A4F /* SplashView.swift */,
 				7688A3A42581CB9400C9F473 /* SetupProfileView.swift */,
 				7691F19F25A91F0900D2DD48 /* CreateUserView.swift */,
+				76CF26D7255B8B5900A46A4F /* IdeaDetailsView.swift */,
+				76CF26DB255B936000A46A4F /* SplashView.swift */,
+				764F96B725AE914B008A0074 /* LikedViewController.swift */,
+				764F96BA25AE938F008A0074 /* LikedIdeaCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -313,6 +322,7 @@
 			files = (
 				7623B6FA25316FE60038E3CC /* Preview Assets.xcassets in Resources */,
 				7623B6F725316FE60038E3CC /* Assets.xcassets in Resources */,
+				764F96B125AE8A99008A0074 /* LikedIdeasStoryboard.storyboard in Resources */,
 				76004C66259AE758007ABE55 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,6 +421,8 @@
 				767F2DA3255E161800638222 /* IdeaItemModelView.swift in Sources */,
 				76ACDB9525677D60000ADF73 /* SearchBar.swift in Sources */,
 				7696E1DE25412CC700EA94DF /* CategoryModel.swift in Sources */,
+				764F96B825AE914B008A0074 /* LikedViewController.swift in Sources */,
+				764F96BB25AE938F008A0074 /* LikedIdeaCell.swift in Sources */,
 				76CF26DC255B936000A46A4F /* SplashView.swift in Sources */,
 				76725B4C25885AC4002AE137 /* SetupProfileViewModifier.swift in Sources */,
 				76E359212537E0CF0006A641 /* CloseModalLip.swift in Sources */,

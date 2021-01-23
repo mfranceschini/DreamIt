@@ -13,7 +13,7 @@ import Firebase
 struct DreamItApp: App {
     
     init() {
-        print("Configuring Firebase")
+        print("Configuring Firebase...")
         FirebaseApp.configure()
         Firestore.firestore()
     }

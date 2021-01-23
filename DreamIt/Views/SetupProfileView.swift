@@ -142,7 +142,7 @@ struct SetupProfileView: View {
                     }
                     VStack {
                         Button("Clear", action: {
-                            loggedUser = LoggedUserModel(firstName: "", lastName: "", profileType: ProfileTypes.Creator, email: "", country: "", phoneNumber: "", portfolioURL: "")
+                            loggedUser = LoggedUserModel(uid: "", firstName: "", lastName: "", profileType: ProfileTypes.Creator, email: "", country: "", phoneNumber: "", portfolioURL: "")
                         })
                         .padding([.bottom, .leading, .trailing])
                         Button("Save", action: {
@@ -170,6 +170,6 @@ struct SetupProfileView: View {
 
 struct SetupProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        SetupProfileView(loggedUser: LoggedUserModel(firstName: "", lastName: "", profileType: ProfileTypes.Creator, email: "", country: "", phoneNumber: "", portfolioURL: ""), isLoggedIn: .constant(false), isSetupProfilePresented: .constant(false))
+        SetupProfileView(loggedUser: LoggedUserModel(uid: "", firstName: "", lastName: "", profileType: ProfileTypes.Creator, email: "", country: "", phoneNumber: "", portfolioURL: ""), isLoggedIn: .constant(false), isSetupProfilePresented: .constant(false))
     }
 }

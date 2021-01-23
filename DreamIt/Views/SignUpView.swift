@@ -98,7 +98,7 @@ struct SignUpView: View {
         .padding(.bottom, isXorAbove ? 60 : 50 )
         .padding(.top, 15)
         .sheet(isPresented: $isSetupProfilePresented, content: {
-            SetupProfileView(loggedUser: LoggedUserModel(firstName: "", lastName: "", profileType: ProfileTypes.Creator, email: "", country: "", phoneNumber: "", portfolioURL: ""), isLoggedIn: self.$isLoggedIn, isSetupProfilePresented: self.$isSetupProfilePresented)
+            SetupProfileView(loggedUser: LoggedUserModel(uid: "", firstName: "", lastName: "", profileType: ProfileTypes.Creator, email: "", country: "", phoneNumber: "", portfolioURL: ""), isLoggedIn: self.$isLoggedIn, isSetupProfilePresented: self.$isSetupProfilePresented)
         })
     }
     

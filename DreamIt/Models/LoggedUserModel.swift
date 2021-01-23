@@ -13,6 +13,7 @@ enum ProfileTypes: String {
 }
 
 struct LoggedUserModel {
+    var uid: String
     var firstName: String
     var lastName: String
     var profileType: ProfileTypes

@@ -120,7 +120,7 @@ struct UserLoginView: View {
     @Binding var isLoggedIn: Bool
     
     private var validated: Bool {
-        !email.isEmpty && !password.isEmpty
+        !email.isEmpty && !password.isEmpty && password.count >= 8
     }
     
     private func submitForm() {
@@ -140,7 +140,7 @@ struct UserLoginView: View {
                 isLoggedIn = true
             }
             else if error != nil {
-                errorMessage = "The email entered is already in use."
+                errorMessage = "The email or password are not valid."
                 isAlertPresented = true
                 loading.toggle()
             }
@@ -164,7 +164,7 @@ struct UserLoginView: View {
             else {
                 Form {
                     Section {
-                        TextField("E-mail", text: self.$email)
+                        TextField("Email", text: self.$email)
                             .keyboardType(.emailAddress)
                             .disableAutocorrection(true)
                             .autocapitalization(.none)
@@ -184,7 +184,7 @@ struct UserLoginView: View {
                         .padding([.leading, .trailing, .bottom])
                         .multilineTextAlignment(.center)
                     Spacer()
-                    Button("Create", action: {
+                    Button("Login", action: {
                         withAnimation {
                             loading.toggle()
                             submitForm()

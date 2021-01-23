@@ -18,14 +18,15 @@ var flags = SCNetworkReachabilityFlags()
 
 struct ContentView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @State var isModalPresented = false
     @State var targetView: TargetView = TargetView.None
     @State private var currentHeight: CGFloat = 0.0
     @State private var movingOffset: CGFloat = 0.0
     @State var isLoggedIn = false
-    @Environment(\.colorScheme) var colorScheme
-    private let reachability = SCNetworkReachabilityCreateWithName(nil, "www.apple.com")
     @State var isConnected: Bool = false
+    
+    private let reachability = SCNetworkReachabilityCreateWithName(nil, "www.apple.com")
     
     private func isNetworkReachable(with flags: SCNetworkReachabilityFlags) -> Bool {
         let isReachable = flags.contains(.reachable)

@@ -20,6 +20,7 @@ struct CreateUserView: View {
     @State var loading = false
     @State var isAlertPresented = false
     @State var errorMessage: String?
+//    @Binding var loggedUser: LoggedUserModel
     
     private var validated: Bool {
         !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty && password == confirmPassword
@@ -38,8 +39,16 @@ struct CreateUserView: View {
         
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if authResult != nil {
-                loading.toggle()
-                isSetupProfilePresented = true
+                if let id = authResult?.user.uid {
+//                    loggedUser.uid = id
+                    loading.toggle()
+                    isSetupProfilePresented = true
+                }
+                else {
+                    errorMessage = "Couldn't create user. Please  try again."
+                    isAlertPresented = true
+                    loading.toggle()
+                }
             }
             else if error != nil {
                 errorMessage = "The email entered is already in use."
@@ -66,7 +75,7 @@ struct CreateUserView: View {
             else {
                 Form {
                     Section {
-                        TextField("E-mail", text: self.$email)
+                        TextField("Email", text: self.$email)
                             .keyboardType(.emailAddress)
                             .disableAutocorrection(true)
                             .autocapitalization(.none)
@@ -85,7 +94,7 @@ struct CreateUserView: View {
                         .padding([.leading, .trailing, .bottom])
                         .padding([.leading, .trailing, .bottom])
                         .multilineTextAlignment(.center)
-                        .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+                        .lineLimit(2)
                     Spacer()
                     Button("Create", action: {
                         withAnimation {
@@ -107,12 +116,6 @@ struct CreateUserView: View {
         .alert(isPresented: $isAlertPresented, content: {
             Alert(title: Text("Error"), message: Text(errorMessage ?? ""), dismissButton: .default(Text("Dismiss")))
         })
-    }
-}
-
-struct CreateUserView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateUserView(isCreateUserPresented: .constant(false), isSetupProfilePresented: .constant(false) )
     }
 }
 
