@@ -23,7 +23,7 @@ class LikedIdeaCell: UITableViewCell {
         self.ideaTitle.text = idea.title
         self.impressions.text = idea.impressions
         self.postDate.text = idea.postDate
-        self.thumbnail.image = idea.thumbnail
+        self.thumbnail.image = UIImage(named: "test")
         self.thumbnail.layer.shadowColor = CGColor.init(gray: 1, alpha: 1)
         self.thumbnail.layer.shadowRadius = 4
         self.thumbnail.layer.shadowOffset = CGSize.init(width: 20, height: 20)

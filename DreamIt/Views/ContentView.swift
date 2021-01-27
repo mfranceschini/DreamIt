@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SystemConfiguration
+import LocalAuthentication
 
 enum TargetView {
     case SignUp
@@ -35,6 +36,35 @@ struct ContentView: View {
         let canConnectWithoutInteraction = canConnectAutomatically && !flags.contains(.interventionRequired)
         
         return isReachable && (!needsConnections || canConnectWithoutInteraction)
+    }
+    
+    private func authenticate() {
+        
+        //first, need to check if the user has logged in before, so the info is saved locally
+        
+        let context = LAContext()
+        var error: NSError?
+
+        // check whether biometric authentication is possible
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            // it's possible, so go ahead and use it
+            let reason = "We need to unlock your data."
+
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+                // authentication has now completed
+                DispatchQueue.main.async {
+                    if success {
+                        withAnimation {
+                            isLoggedIn = true
+                        }
+                    } else {
+                        // there was a problem
+                    }
+                }
+            }
+        } else {
+            // no biometrics
+        }
     }
     
     var body: some View {
@@ -123,6 +153,7 @@ struct ContentView: View {
             .onAppear {
                 SCNetworkReachabilityGetFlags(self.reachability!, &flags)
                 self.isConnected = isNetworkReachable(with: flags)
+                authenticate()
             }
             .onTapGesture {
                 self.isConnected = isNetworkReachable(with: flags)

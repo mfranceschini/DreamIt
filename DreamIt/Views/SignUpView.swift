@@ -16,7 +16,7 @@ struct SignUpView: View {
     @Binding var isLoggedIn: Bool
     @Environment(\.colorScheme) var colorScheme
     @State var isSetupProfilePresented: Bool = false
-    @State var isCreateUserPresented: Bool = false
+    @State var isCreateUserPresented: Bool = true
     
     var body: some View {
         let phoneRatio = String(format: "%.3f", Constants.screenSize.width / Constants.screenSize.height)

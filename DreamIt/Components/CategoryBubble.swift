@@ -29,7 +29,6 @@ struct CategoryBubble: View {
                     x: 1,
                     y: 1)
             .clipShape(Capsule())
-        }
-        
+        }        
     }
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 import FirebaseAuth
+import LocalAuthentication
 
 struct LoginView: View {
     
@@ -15,7 +16,7 @@ struct LoginView: View {
     @State private var textTitle = ""
     @Binding var isLoggedIn: Bool
     @Environment(\.colorScheme) var colorScheme
-    @State var isUserLoginPresented: Bool = false
+    @State var isUserLoginPresented: Bool = true
     @State var isSetupProfilePresented: Bool = false
     
     var body: some View {

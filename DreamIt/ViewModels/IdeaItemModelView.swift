@@ -19,9 +19,11 @@ extension Double {
     }
 }
 
-struct IdeaItemModelView: Identifiable, Hashable {
+struct IdeaItemModelView: Identifiable {
     
-    let id = UUID()
+    public var id: String {
+        ideaItem.id
+    }
     
     static func == (lhs: IdeaItemModelView, rhs: IdeaItemModelView) -> Bool {
         return lhs.title == rhs.title
@@ -43,6 +45,10 @@ struct IdeaItemModelView: Identifiable, Hashable {
         ideaItem.author
     }
     
+    public var description: String {
+        ideaItem.description
+    }
+    
     public var liked: Bool {
         get {
             ideaItem.liked
@@ -57,12 +63,20 @@ struct IdeaItemModelView: Identifiable, Hashable {
     }
     
     public var thumbnail: UIImage {
-        ideaItem.thumbnail
+        switch ideaItem.category {
+        case 1:
+            return UIImage(named: "test")!
+        default:
+            return UIImage(named: "test")!
+        }
     }
     
     public var postDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
+        guard let date = dateFormatter.date(from: ideaItem.createdAt) else { return "now" }
         let today = calendar.startOfDay(for: Date())
-        let createDate = calendar.startOfDay(for: ideaItem.createdAt)
+        let createDate = calendar.startOfDay(for: date)
         let components = calendar.dateComponents([.year, .month, .day, .minute, .hour], from: createDate, to: today)
         
         if let year = components.year {

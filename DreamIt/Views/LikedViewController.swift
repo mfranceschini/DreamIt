@@ -11,18 +11,18 @@ import UIKit
 class LikedViewController: UIViewController {
     
     let ideasList: [IdeaItemModelView] = [
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1, title: "App for finance", author: "Joe Doe", createdAt: Date(timeIntervalSinceNow: -86400 * 366), impressions: 23, liked: true, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 2,title: "Website for portfolio", author: "Camila Avelar", createdAt: Date(), impressions: 4200, liked: false, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1,title: "Design for iOS app", author: "Gareth Bale", createdAt: Date(), impressions: 44, liked: true, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 3,title: "Mobile game", author: "Johnny Deep", createdAt: Date(), impressions: 1000, liked: false, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1,title: "App for finance", author: "Joe Doe", createdAt: Date(), impressions: 23, liked: false, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 2,title: "Website for portfolio", author: "Camila Avelar", createdAt: Date(), impressions: 4200, liked: false, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 3,title: "Design for iOS app", author: "Gareth Bale", createdAt: Date(), impressions: 44, liked: false, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1,title: "Mobile game", author: "Johnny Deep", createdAt: Date(), impressions: 1000, liked: false, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1,title: "App for finance", author: "Joe Doe", createdAt: Date(), impressions: 23, liked: false, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 2,title: "Website for portfolio", author: "Camila Avelar", createdAt: Date(), impressions: 4200, liked: false, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1,title: "Design for iOS app", author: "Gareth Bale", createdAt: Date(), impressions: 44, liked: false, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1,title: "Mobile game", author: "Johnny Deep", createdAt: Date(), impressions: 1000, liked: false, thumbnail: UIImage(named: "test")!)),
+//        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1, title: "App for finance", author: "Joe Doe", createdAt: Date(timeIntervalSinceNow: -86400 * 366), impressions: 23, liked: true, thumbnail: UIImage(named: "test")!)),
+//        IdeaItemModelView(ideaItem: IdeaItemModel(category: 2,title: "Website for portfolio", author: "Camila Avelar", createdAt: Date(), impressions: 4200, liked: false, thumbnail: UIImage(named: "test")!)),
+//        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1,title: "Design for iOS app", author: "Gareth Bale", createdAt: Date(), impressions: 44, liked: true, thumbnail: UIImage(named: "test")!)),
+//        IdeaItemModelView(ideaItem: IdeaItemModel(category: 3,title: "Mobile game", author: "Johnny Deep", createdAt: Date(), impressions: 1000, liked: false, thumbnail: UIImage(named: "test")!)),
+//        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1,title: "App for finance", author: "Joe Doe", createdAt: Date(), impressions: 23, liked: false, thumbnail: UIImage(named: "test")!)),
+//        IdeaItemModelView(ideaItem: IdeaItemModel(category: 2,title: "Website for portfolio", author: "Camila Avelar", createdAt: Date(), impressions: 4200, liked: false, thumbnail: UIImage(named: "test")!)),
+//        IdeaItemModelView(ideaItem: IdeaItemModel(category: 3,title: "Design for iOS app", author: "Gareth Bale", createdAt: Date(), impressions: 44, liked: false, thumbnail: UIImage(named: "test")!)),
+//        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1,title: "Mobile game", author: "Johnny Deep", createdAt: Date(), impressions: 1000, liked: false, thumbnail: UIImage(named: "test")!)),
+//        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1,title: "App for finance", author: "Joe Doe", createdAt: Date(), impressions: 23, liked: false, thumbnail: UIImage(named: "test")!)),
+//        IdeaItemModelView(ideaItem: IdeaItemModel(category: 2,title: "Website for portfolio", author: "Camila Avelar", createdAt: Date(), impressions: 4200, liked: false, thumbnail: UIImage(named: "test")!)),
+//        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1,title: "Design for iOS app", author: "Gareth Bale", createdAt: Date(), impressions: 44, liked: false, thumbnail: UIImage(named: "test")!)),
+//        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1,title: "Mobile game", author: "Johnny Deep", createdAt: Date(), impressions: 1000, liked: false, thumbnail: UIImage(named: "test")!)),
     ]
     
     @IBOutlet weak var tableView: UITableView!

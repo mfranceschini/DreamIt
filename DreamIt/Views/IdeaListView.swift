@@ -15,30 +15,10 @@ extension UIApplication {
 
 struct IdeaListView: View {
     
-    @State var categories: [CategoryModel] = [
-        CategoryModel(id: 1,name: "Mobile Apps", selected: true),
-        CategoryModel(id: 2,name: "Websites", selected: false),
-        CategoryModel(id: 3,name: "UX Design", selected: false),
-        CategoryModel(id: 4,name: "Drawing", selected: false),
-        CategoryModel(id: 5,name: "Websites", selected: false),
-        CategoryModel(id: 6,name: "Mobile Apps", selected: false)
-    ]
+    let api = API()
     
-    @State var ideasList: [IdeaItemModelView] = [
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1, title: "App for finance", author: "Joe Doe", createdAt: Date(timeIntervalSinceNow: -86400 * 366), impressions: 23, liked: true, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 2,title: "Website for portfolio", author: "Camila Avelar", createdAt: Date(), impressions: 4200, liked: false, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1,title: "Design for iOS app", author: "Gareth Bale", createdAt: Date(), impressions: 44, liked: true, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 3,title: "Mobile game", author: "Johnny Deep", createdAt: Date(), impressions: 1000, liked: false, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1,title: "App for finance", author: "Joe Doe", createdAt: Date(), impressions: 23, liked: false, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 2,title: "Website for portfolio", author: "Camila Avelar", createdAt: Date(), impressions: 4200, liked: false, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 3,title: "Design for iOS app", author: "Gareth Bale", createdAt: Date(), impressions: 44, liked: false, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1,title: "Mobile game", author: "Johnny Deep", createdAt: Date(), impressions: 1000, liked: false, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1,title: "App for finance", author: "Joe Doe", createdAt: Date(), impressions: 23, liked: false, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 2,title: "Website for portfolio", author: "Camila Avelar", createdAt: Date(), impressions: 4200, liked: false, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1,title: "Design for iOS app", author: "Gareth Bale", createdAt: Date(), impressions: 44, liked: false, thumbnail: UIImage(named: "test")!)),
-        IdeaItemModelView(ideaItem: IdeaItemModel(category: 1,title: "Mobile game", author: "Johnny Deep", createdAt: Date(), impressions: 1000, liked: false, thumbnail: UIImage(named: "test")!)),
-    ]
-    
+    @State var categories: [CategoryModel] = []
+    @State var ideasList: [IdeaItemModelView] = []
     @State var ideaDetailsPresented: Bool = false
     @State private var loading: Bool = true
     @State private var scale: CGFloat = 1
@@ -48,28 +28,40 @@ struct IdeaListView: View {
     @Binding var selectedTab: String
     @State var appliedFilters: [CategoryModel] = []
     
-    private func reloadList(_ waitTime: Double) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + waitTime) {
-            self.loading = false
+    private func loadData() {
+        ideasList = []
+        api.getIdeas { ideaData in
+            ideasList = ideaData
+            api.getCategories { categoryData in
+                withAnimation {
+                    categories = categoryData
+                    self.loading = false
+                }
+            }
         }
     }
     
     private func applyFilter(_ filters: [CategoryModel]) {
-        let currentFilters = filters.filter { $0.selected }
-        let filteredList = ideasList.filter { idea in currentFilters.contains { $0.id == idea.category} }
         self.loading = true
-        print(filteredList)
-        //        ideasList = filteredList
-        reloadList(4.0)
+        ideasList = []
+        let currentFilters = filters.filter { $0.selected }
+        if currentFilters.count > 0 {
+            api.getIdeasByCategories(selectedCategories: currentFilters) { ideaData in
+                withAnimation {
+                    ideasList = ideaData
+                    self.loading = false
+                }
+            }
+        }
+        else {
+            withAnimation {
+                self.loading = false
+            }
+        }
     }
     
-    private func applySearchText(_ text: String) {
-        print("Searching for",text)
-        //        ideasList.filter { ideaItem in
-        //            (self.searchText.isEmpty ? true :
-        //                ideaItem.title.lowercased().contains(self.searchText.lowercased()) ||
-        //                ideaItem.author.lowercased().contains(self.searchText.lowercased()))
-        //        }
+    private func createIdeaBinding(_ idea: IdeaItemModelView) -> Binding<IdeaItemModelView> {
+        Binding<IdeaItemModelView>.constant(idea)
     }
     
     var body: some View {
@@ -99,7 +91,6 @@ struct IdeaListView: View {
                 else {
                     SearchBar(text: $searchText)
                         .frame(width: Constants.screenSize.width * 0.95, alignment: .center)
-                        .onChange(of: searchText, perform: applySearchText)
                     Group {
                         Text("Categories")
                             .modifier(CategoriesTitleModifier())
@@ -115,41 +106,45 @@ struct IdeaListView: View {
                     }
                     
                     if ideasList.count > 0 {
-                        ForEach(ideasList.indices.filter { index in
+                        ForEach(ideasList.filter { filterIdea in
                             (self.searchText.isEmpty ? true :
-                                ideasList[index].title.lowercased().contains(self.searchText.lowercased()) ||
-                                ideasList[index].author.lowercased().contains(self.searchText.lowercased()))
-                        }, id: \.self) { ideaIndex in
-                            DreamCard(item: $ideasList[ideaIndex])
+                                filterIdea.title.lowercased().contains(self.searchText.lowercased()) ||
+                                filterIdea.author.lowercased().contains(self.searchText.lowercased()))
+                        }) { idea in
+                            DreamCard(item: createIdeaBinding(idea))
                                 .onTapGesture {
-                                    self.selectedIdea = ideasList[ideaIndex]
+                                    self.selectedIdea = idea
                                     ideaDetailsPresented = true
                                 }
                                 .scaleEffect(scale)
                                 .sheet(
                                     isPresented: $ideaDetailsPresented,
                                     onDismiss: {
-                                        withAnimation {
-                                            self.loading = true
-                                            reloadList(2.0)
-                                        }
+                                        loadData()
                                     },
                                     content: {
-                                        IdeaDetailsView(ideaData: Binding<IdeaItemModelView>(self.$selectedIdea)!)
+                                        IdeaDetailsView(ideaData: createIdeaBinding(self.selectedIdea!))
                                     }
                                 )
                         }
+                        .transition(.move(edge: .trailing))
                     }
                     else {
-                        Text("There are no ideas available at the moment.")
-                            .modifier(NoIdeasLabelModifier())
+                        VStack(alignment: .center) {
+                            Image(systemName: "eyes.inverse")
+                                .resizable()
+                                .frame(width: 35, height: 35, alignment: .center)
+                                .foregroundColor(.white)
+                            Text("There are no ideas available at the moment")
+                                .modifier(NoIdeasLabelModifier())
+                        }
+                        .padding(.top, 100)
+                        .padding(.horizontal, 50)
+                        .transition(.move(edge: .bottom))
+                        
                     }
                 }
                 
-            }
-            .onAppear() {
-                reloadList(4.0)
-                appliedFilters = categories.filter { $0.selected }
             }
             .onTapGesture {
                 UIApplication.shared.endEditing()
@@ -160,6 +155,10 @@ struct IdeaListView: View {
         )
         .edgesIgnoringSafeArea(.top)
         .blur(radius: self.ideaDetailsPresented ? 3.0 : 0.0)
+        .onAppear() {
+            loadData()
+            appliedFilters = categories.filter { $0.selected }
+        }
     }
     
 }

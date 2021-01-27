@@ -47,8 +47,6 @@ struct NoIdeasLabelModifier: ViewModifier {
             .multilineTextAlignment(.center)
             .foregroundColor(.white)
             .padding()
-            .padding(.top, 100)
-            .padding(.horizontal, 50)
             .frame(alignment: .center)
     }
 }

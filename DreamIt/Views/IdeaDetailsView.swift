@@ -53,7 +53,7 @@ struct IdeaDetailsView: View {
                             .fontWeight(.bold)
                             .frame(width: Constants.screenSize.width * 0.9, alignment: .leading)
                             .modifier(BodyTitleModifier())
-                        Text("This is the idea description")
+                        Text(self.ideaData.description)
                             .modifier(BodyLabelModifier())
                             .frame(width: Constants.screenSize.width * 0.9, alignment: .leading)
                     }

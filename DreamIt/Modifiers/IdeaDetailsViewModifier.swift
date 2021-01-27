@@ -37,6 +37,7 @@ struct BodyLabelModifier: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
     func body(content: Content) -> some View {
         content
+        .lineLimit(nil)
         .font(.body)
         .padding(.leading)
     }

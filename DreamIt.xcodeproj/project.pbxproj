@@ -22,6 +22,7 @@
 		767F2DA3255E161800638222 /* IdeaItemModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767F2DA2255E161800638222 /* IdeaItemModelView.swift */; };
 		767F2DA6255E20A600638222 /* IdeaDetailsViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767F2DA5255E20A600638222 /* IdeaDetailsViewModifier.swift */; };
 		7688A3A52581CB9400C9F473 /* SetupProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688A3A42581CB9400C9F473 /* SetupProfileView.swift */; };
+		768AB9D125C0CDBD00C62B5E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768AB9D025C0CDBD00C62B5E /* API.swift */; };
 		7691F19325A9171400D2DD48 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691F19225A9171400D2DD48 /* CustomProgressView.swift */; };
 		7691F1A025A91F0900D2DD48 /* CreateUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691F19F25A91F0900D2DD48 /* CreateUserView.swift */; };
 		7696E1D525410F9C00EA94DF /* DreamCardViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7696E1D425410F9C00EA94DF /* DreamCardViewModifier.swift */; };
@@ -69,6 +70,7 @@
 		767F2DA2255E161800638222 /* IdeaItemModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaItemModelView.swift; sourceTree = "<group>"; };
 		767F2DA5255E20A600638222 /* IdeaDetailsViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaDetailsViewModifier.swift; sourceTree = "<group>"; };
 		7688A3A42581CB9400C9F473 /* SetupProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileView.swift; sourceTree = "<group>"; };
+		768AB9D025C0CDBD00C62B5E /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = API.swift; path = "../../../../XCode/RxSwift Project/RxSwift Project/API/Models/API.swift"; sourceTree = "<group>"; };
 		7691F19225A9171400D2DD48 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
 		7691F19F25A91F0900D2DD48 /* CreateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserView.swift; sourceTree = "<group>"; };
 		7696E1D425410F9C00EA94DF /* DreamCardViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamCardViewModifier.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		7623B6F125316FE30038E3CC /* DreamIt */ = {
 			isa = PBXGroup;
 			children = (
+				768AB9CF25C0CDB400C62B5E /* Services */,
 				76F0E556258D9DEF0017CD9B /* Repositories */,
 				76C98381256365E9000EA3A6 /* Utils */,
 				767F2D9C255E14E400638222 /* ViewModels */,
@@ -171,6 +174,14 @@
 				767F2DA2255E161800638222 /* IdeaItemModelView.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		768AB9CF25C0CDB400C62B5E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				768AB9D025C0CDBD00C62B5E /* API.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		76B28CD4253172CA00F1A61C /* Views */ = {
@@ -413,6 +424,7 @@
 				7688A3A52581CB9400C9F473 /* SetupProfileView.swift in Sources */,
 				76AF1FB225884EBA0035ACFA /* CountryUtils.swift in Sources */,
 				763E140525A6BE0000ACAEF7 /* FunctionsUtils.swift in Sources */,
+				768AB9D125C0CDBD00C62B5E /* API.swift in Sources */,
 				76E3592E253942AC0006A641 /* CategoryBubble.swift in Sources */,
 				76B28CDF25318A9B00F1A61C /* LandingViewModifier.swift in Sources */,
 				7623B6F325316FE30038E3CC /* DreamItApp.swift in Sources */,
