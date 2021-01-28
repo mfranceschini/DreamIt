@@ -38,17 +38,10 @@ struct CreateUserView: View {
         }
         
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            if authResult != nil {
-                if let id = authResult?.user.uid {
-//                    loggedUser.uid = id
-                    loading.toggle()
-                    isSetupProfilePresented = true
-                }
-                else {
-                    errorMessage = "Couldn't create user. Please  try again."
-                    isAlertPresented = true
-                    loading.toggle()
-                }
+            if let userData = authResult {
+                saveUserInfo(userData)
+                loading.toggle()
+                isSetupProfilePresented = true
             }
             else if error != nil {
                 errorMessage = "The email entered is already in use."

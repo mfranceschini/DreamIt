@@ -21,17 +21,20 @@ struct IdeaListView: View {
     @State var ideasList: [IdeaItemModelView] = []
     @State var ideaDetailsPresented: Bool = false
     @State private var loading: Bool = true
+    @State private var filterLoading: Bool = false
     @State private var scale: CGFloat = 1
     @State private var searchText : String = ""
     @State private var selectedIdea: IdeaItemModelView?
     @Environment(\.colorScheme) var colorScheme
     @Binding var selectedTab: String
+    @Binding var isLoggedIn: Bool
     @State var appliedFilters: [CategoryModel] = []
     
     private func loadData() {
-        ideasList = []
         api.getIdeas { ideaData in
-            ideasList = ideaData
+            withAnimation {
+                ideasList = ideaData
+            }
             api.getCategories { categoryData in
                 withAnimation {
                     categories = categoryData
@@ -42,20 +45,20 @@ struct IdeaListView: View {
     }
     
     private func applyFilter(_ filters: [CategoryModel]) {
-        self.loading = true
-        ideasList = []
+        self.filterLoading = true
         let currentFilters = filters.filter { $0.selected }
         if currentFilters.count > 0 {
             api.getIdeasByCategories(selectedCategories: currentFilters) { ideaData in
                 withAnimation {
                     ideasList = ideaData
-                    self.loading = false
+                    self.filterLoading = false
                 }
             }
         }
         else {
             withAnimation {
-                self.loading = false
+                ideasList = []
+                self.filterLoading = false
             }
         }
     }
@@ -72,7 +75,14 @@ struct IdeaListView: View {
                     .modifier(TitleListModifier())
                 Spacer()
                 Button(action: {
-                    selectedTab = "profile"
+                    //temporary solution
+                    doLogout { isLogged in
+                        if !isLogged {
+                            withAnimation {
+                                isLoggedIn = false
+                            }
+                        }
+                    }
                 }) {
                     Image("profile")
                         .resizable()
@@ -105,7 +115,12 @@ struct IdeaListView: View {
                         }
                     }
                     
-                    if ideasList.count > 0 {
+                    if filterLoading {
+                        Loading()
+                            .frame(width: Constants.screenSize.width * 0.9, height: Constants.screenSize.height * 0.7, alignment: .bottom)
+                            .background(Color.clear)
+                    }
+                    else if ideasList.count > 0 {
                         ForEach(ideasList.filter { filterIdea in
                             (self.searchText.isEmpty ? true :
                                 filterIdea.title.lowercased().contains(self.searchText.lowercased()) ||
@@ -143,6 +158,8 @@ struct IdeaListView: View {
                         .transition(.move(edge: .bottom))
                         
                     }
+                    
+                    
                 }
                 
             }

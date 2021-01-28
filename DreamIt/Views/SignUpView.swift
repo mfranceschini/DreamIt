@@ -14,6 +14,7 @@ struct SignUpView: View {
     @Binding var movingOffset: CGFloat
     @State private var textTitle = ""
     @Binding var isLoggedIn: Bool
+    @Binding var isModalPresented: Bool
     @Environment(\.colorScheme) var colorScheme
     @State var isSetupProfilePresented: Bool = false
     @State var isCreateUserPresented: Bool = true
@@ -98,7 +99,7 @@ struct SignUpView: View {
         .padding(.bottom, isXorAbove ? 60 : 50 )
         .padding(.top, 15)
         .sheet(isPresented: $isSetupProfilePresented, content: {
-            SetupProfileView(loggedUser: LoggedUserModel(uid: "", firstName: "", lastName: "", profileType: ProfileTypes.Creator, email: "", country: "", phoneNumber: "", portfolioURL: ""), isLoggedIn: self.$isLoggedIn, isSetupProfilePresented: self.$isSetupProfilePresented)
+            SetupProfileView(loggedUser: LoggedUserModel(uid: "", firstName: "", lastName: "", profileType: ProfileTypes.Creator, email: "", country: "", phoneNumber: "", portfolioURL: ""), isLoggedIn: self.$isLoggedIn, isSetupProfilePresented: self.$isSetupProfilePresented, isModalPresented: $isModalPresented)
         })
     }
     

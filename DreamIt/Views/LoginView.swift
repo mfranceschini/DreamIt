@@ -15,6 +15,7 @@ struct LoginView: View {
     @Binding var movingOffset: CGFloat
     @State private var textTitle = ""
     @Binding var isLoggedIn: Bool
+    @Binding var isModalPresented: Bool
     @Environment(\.colorScheme) var colorScheme
     @State var isUserLoginPresented: Bool = true
     @State var isSetupProfilePresented: Bool = false
@@ -23,7 +24,6 @@ struct LoginView: View {
         let phoneRatio = String(format: "%.3f", Constants.screenSize.width / Constants.screenSize.height)
         let refRatio =   String(format: "%.3f",  9.0 / 16.0)
         let isXorAbove = phoneRatio != refRatio
-        
         
         VStack(spacing: 25) {
             CloseModalLip()
@@ -37,7 +37,7 @@ struct LoginView: View {
                 Spacer()
                 
                 if isUserLoginPresented {
-                    UserLoginView(isUserLoginPresented: $isUserLoginPresented, isLoggedIn: $isLoggedIn)
+                    UserLoginView(isUserLoginPresented: $isUserLoginPresented, isLoggedIn: $isLoggedIn, isModalPresented: $isModalPresented)
                         .transition(.move(edge: isUserLoginPresented ? .trailing : .leading))
                 }
                 else {
@@ -105,7 +105,7 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(movingOffset: .constant(0.0), isLoggedIn: .constant(false))
+        LoginView(movingOffset: .constant(0.0), isLoggedIn: .constant(false), isModalPresented: .constant(false))
     }
 }
 
@@ -119,6 +119,7 @@ struct UserLoginView: View {
     @State var isAlertPresented = false
     @State var errorMessage: String?
     @Binding var isLoggedIn: Bool
+    @Binding var isModalPresented: Bool
     
     private var validated: Bool {
         !email.isEmpty && !password.isEmpty && password.count >= 8
@@ -136,9 +137,13 @@ struct UserLoginView: View {
         }
         
         Auth.auth().signIn(withEmail: email, password: password) { [self] authResult, error in
-            if authResult != nil {
+            if let userData = authResult {
+                saveUserInfo(userData)
                 loading.toggle()
-                isLoggedIn = true
+                withAnimation {
+                    isLoggedIn = true
+                    isModalPresented = false
+                }
             }
             else if error != nil {
                 errorMessage = "The email or password are not valid."

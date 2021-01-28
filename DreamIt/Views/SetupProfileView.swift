@@ -24,6 +24,7 @@ struct SetupProfileView: View {
     @State private var loading = false
     @Binding var isLoggedIn: Bool
     @Binding var isSetupProfilePresented: Bool
+    @Binding var isModalPresented: Bool
     @State var isAlertPresented = false
     @State var errorMessage: String?
     
@@ -48,14 +49,10 @@ struct SetupProfileView: View {
     
     private func addSetupProfile() {
         loading.toggle()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-            db.collection("usersProfiles").document("profile2").setData([
-                "name": loggedUser.firstName,
-                "lastName": loggedUser.lastName,
-                "country": loggedUser.country,
-                "portfolioUrl": loggedUser.portfolioURL,
-                "profileType": loggedUser.profileType.rawValue
-            ]) { err in
+        if let userId = getUserID() {
+            loggedUser.uid = userId
+            let userAPI = UserAPI()
+            userAPI.saveUserProfile(loggedUser) { err in
                 loading.toggle()
                 if let err = err {
                     print("Error writing document: \(err)")
@@ -63,10 +60,17 @@ struct SetupProfileView: View {
                     isAlertPresented = true
                 } else {
                     print("User Profile successfully written!")
-                    isLoggedIn = true
-                    isSetupProfilePresented = false
+                    withAnimation {
+                        isModalPresented = false
+                        isLoggedIn = true
+                        isSetupProfilePresented = false
+                    }
                 }
             }
+        }
+        else {
+            errorMessage = "Could not create user. Please try again."
+            isAlertPresented = true
         }
     }
     
@@ -170,6 +174,6 @@ struct SetupProfileView: View {
 
 struct SetupProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        SetupProfileView(loggedUser: LoggedUserModel(uid: "", firstName: "", lastName: "", profileType: ProfileTypes.Creator, email: "", country: "", phoneNumber: "", portfolioURL: ""), isLoggedIn: .constant(false), isSetupProfilePresented: .constant(false))
+        SetupProfileView(loggedUser: LoggedUserModel(uid: "", firstName: "", lastName: "", profileType: ProfileTypes.Creator, email: "", country: "", phoneNumber: "", portfolioURL: ""), isLoggedIn: .constant(false), isSetupProfilePresented: .constant(false), isModalPresented: .constant(false))
     }
 }

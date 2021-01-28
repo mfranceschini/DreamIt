@@ -26,6 +26,7 @@ struct ContentView: View {
     @State private var movingOffset: CGFloat = 0.0
     @State var isLoggedIn = false
     @State var isConnected: Bool = false
+    @State var isAlertPresented = false
     
     private let reachability = SCNetworkReachabilityCreateWithName(nil, "www.apple.com")
     
@@ -42,34 +43,40 @@ struct ContentView: View {
         
         //first, need to check if the user has logged in before, so the info is saved locally
         
-        let context = LAContext()
-        var error: NSError?
+        if isUserLoggedIn() {
+            let context = LAContext()
+            var error: NSError?
 
-        // check whether biometric authentication is possible
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            // it's possible, so go ahead and use it
-            let reason = "We need to unlock your data."
+            // check whether biometric authentication is possible
+            if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                // it's possible, so go ahead and use it
+                let reason = "We need to unlock your data."
 
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
-                // authentication has now completed
-                DispatchQueue.main.async {
-                    if success {
-                        withAnimation {
-                            isLoggedIn = true
+                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+                    // authentication has now completed
+                    DispatchQueue.main.async {
+                        if success {
+                            withAnimation {
+                                isModalPresented = false
+                                isLoggedIn = true
+                            }
+                        } else {
+                            isAlertPresented = true
                         }
-                    } else {
-                        // there was a problem
                     }
                 }
+            } else {
+                withAnimation {
+                    isModalPresented = false
+                    isLoggedIn = true
+                }
             }
-        } else {
-            // no biometrics
         }
     }
     
     var body: some View {
         if isLoggedIn {
-            TabbarView(newListingPresented: false)
+            TabbarView(isLoggedIn: $isLoggedIn)
                 .transition(.move(edge: .trailing))
         }
         else {
@@ -158,6 +165,9 @@ struct ContentView: View {
             .onTapGesture {
                 self.isConnected = isNetworkReachable(with: flags)
             }
+            .alert(isPresented: $isAlertPresented, content: {
+                Alert(title: Text("Error"), message: Text("Could not login using FaceID. Please use your account."), dismissButton: .default(Text("Confirm")))
+            })
         }
     }
 }

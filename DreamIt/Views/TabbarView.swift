@@ -9,12 +9,12 @@ import SwiftUI
 
 struct TabbarView: View {
     @Environment(\.colorScheme) var colorScheme
-    @State var newListingPresented: Bool
     @State private var selectedTab = "home"
+    @Binding var isLoggedIn: Bool
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            IdeaListView(ideaDetailsPresented: false, selectedTab: $selectedTab)
+            IdeaListView(ideaDetailsPresented: false, selectedTab: $selectedTab, isLoggedIn: $isLoggedIn)
                 .tabItem {
                     Image(systemName: "house.fill")
                         .onTapGesture {
@@ -30,7 +30,7 @@ struct TabbarView: View {
                         }
                 }
                 .tag("chats")
-            IdeaListView(ideaDetailsPresented: false, selectedTab: $selectedTab)
+            IdeaListView(ideaDetailsPresented: false, selectedTab: $selectedTab, isLoggedIn: $isLoggedIn)
                 .tabItem {
                     Image(systemName: "plus.diamond")
                         .onTapGesture {
@@ -46,7 +46,7 @@ struct TabbarView: View {
                         }
                 }
                 .tag("liked")
-            IdeaListView(ideaDetailsPresented: false, selectedTab: $selectedTab)
+            UserProfileView(isLoggedIn: $isLoggedIn)
                 .tabItem {
                     Image(systemName: "person.fill")
                         .onTapGesture {
@@ -66,6 +66,6 @@ struct TabbarView: View {
 
 struct TabbarView_Previews: PreviewProvider {
     static var previews: some View {
-        TabbarView(newListingPresented: false)
+        TabbarView(isLoggedIn: .constant(true))
     }
 }
