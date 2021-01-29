@@ -20,7 +20,7 @@ struct IdeaListView: View {
     @State var categories: [CategoryModel] = []
     @State var ideasList: [IdeaItemModelView] = []
     @State var ideaDetailsPresented: Bool = false
-    @State private var loading: Bool = true
+    @State private var loading: Bool = false
     @State private var filterLoading: Bool = false
     @State private var scale: CGFloat = 1
     @State private var searchText : String = ""
@@ -29,8 +29,11 @@ struct IdeaListView: View {
     @Binding var selectedTab: String
     @Binding var isLoggedIn: Bool
     @State var appliedFilters: [CategoryModel] = []
+    @State private var isRotated = false
+    @State var didChangeData = false
     
     private func loadData() {
+        self.loading = true
         api.getIdeas { ideaData in
             withAnimation {
                 ideasList = ideaData
@@ -39,6 +42,7 @@ struct IdeaListView: View {
                 withAnimation {
                     categories = categoryData
                     self.loading = false
+                    self.isRotated = false
                 }
             }
         }
@@ -70,9 +74,24 @@ struct IdeaListView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Ideas List")
-                    .fontWeight(.bold)
-                    .modifier(TitleListModifier())
+                HStack {
+                    Text("Ideas List")
+                        .fontWeight(.bold)
+                        .modifier(TitleListModifier())
+                    Button(action: {
+                        self.isRotated.toggle()
+                        loadData()
+                    }) {
+                        Image(systemName: "arrow.counterclockwise")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(.white)
+                            .rotationEffect(Angle.degrees(isRotated ? 0 : 360))
+                            .animation(.easeInOut)
+                    }
+                    .frame(width: 15, height: 15, alignment: .center)
+                    .padding(.top, 50)
+                }
                 Spacer()
                 Button(action: {
                     //temporary solution
@@ -135,10 +154,12 @@ struct IdeaListView: View {
                                 .sheet(
                                     isPresented: $ideaDetailsPresented,
                                     onDismiss: {
-                                        loadData()
+                                        if didChangeData {
+                                            loadData()
+                                        }
                                     },
                                     content: {
-                                        IdeaDetailsView(ideaData: createIdeaBinding(self.selectedIdea!))
+                                        IdeaDetailsView(ideaId: self.selectedIdea!.id, didChangeData: $didChangeData)
                                     }
                                 )
                         }

@@ -29,6 +29,10 @@ struct CategoryBubble: View {
                     x: 1,
                     y: 1)
             .clipShape(Capsule())
-        }        
+        }
+        .onAppear() {
+            categories.sort { ($0.name < $1.name) }
+            categories.sort { ($0.selected && !$1.selected) }
+        }
     }
 }

@@ -11,7 +11,17 @@ struct DreamCard: View {
     
     @Binding var item: IdeaItemModelView
     @State private var isRotated = false
+    @State private var isLiked = false
 
+    private func likeIdea() {
+        let api = API()
+        
+        self.isLiked.toggle()
+        self.isRotated.toggle()
+        api.setLikedIdea(likedIdeaId: item.id) {_ in
+            item.setIdeaLike()
+        }
+    }
     
     var body: some View {
         Group {
@@ -19,12 +29,11 @@ struct DreamCard: View {
                 HStack {
                     Button(action: {
                         withAnimation {
-                            self.isRotated.toggle()
-                            self.item.liked.toggle()
+                            likeIdea()
                         }
                     }) {
-                        Image(systemName: self.item.liked ? "hand.thumbsup.fill" : "hand.thumbsup")
-                            .modifier(LikeModifier(liked: self.item.liked))
+                        Image(systemName: self.isLiked ? "hand.thumbsup.fill" : "hand.thumbsup")
+                            .modifier(LikeModifier(liked: self.isLiked))
                         .rotation3DEffect(Angle.degrees(isRotated ? 0 : 360), axis: (x: 0, y: 1, z: 0))
                         .animation(.easeInOut)
                     }
@@ -40,12 +49,13 @@ struct DreamCard: View {
                     Image(uiImage: self.item.thumbnail)
                         .resizable()
                         .modifier(DreamImageModifier())
+                    
                     VStack(alignment: .leading) {
-                        Text(self.item.title)
+                        Text(self.item.title.localizedCapitalized)
                             .fontWeight(.bold)
                             .frame(alignment: .leading)
                             .modifier(DreamTitleModifier())
-                        Text("by \(self.item.author)")
+                        Text("by \(self.item.author.localizedCapitalized)")
                             .fontWeight(.bold)
                             .frame(alignment: .leading)
                             .modifier(DreamAuthorModifier())
@@ -65,6 +75,9 @@ struct DreamCard: View {
                 .opacity(0.6)
             }
             .modifier(ContainerModifier())
+        }
+        .onAppear() {
+            self.isLiked = item.liked
         }
     }
     

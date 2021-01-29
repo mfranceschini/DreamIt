@@ -59,7 +59,7 @@ struct SplashView: View {
                             .font(Font.largeTitle)
                             .kerning(2.0)
                             .fontWeight(.bold)
-                            .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
+                            .foregroundColor(Color.white)
                         if self.moveLogo {
                             Spacer()
                         }

@@ -23,7 +23,7 @@ struct TitleListModifier: ViewModifier {
         content
             .font(.largeTitle)
             .foregroundColor(.white)
-            .padding()
+            .padding([.top,.leading,.bottom])
             .padding(.top, 50)
             .frame(alignment: .leading)
     }

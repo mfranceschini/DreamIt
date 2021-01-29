@@ -138,4 +138,8 @@ struct IdeaItemModelView: Identifiable {
             return "\(sign)\(n)"
         }
     }
+    
+    mutating func setIdeaLike() {
+        ideaItem.liked.toggle()
+    }
 }

@@ -22,7 +22,7 @@ struct TabbarView: View {
                         }
                 }
                 .tag("home")
-            LikedIdeasView()
+            LegacyScrollView()
                 .tabItem {
                     Image(systemName: "ellipsis.bubble.fill")
                         .onTapGesture {
