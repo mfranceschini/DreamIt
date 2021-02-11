@@ -21,7 +21,6 @@
 		764F96B125AE8A99008A0074 /* LikedIdeasStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 764F96B025AE8A99008A0074 /* LikedIdeasStoryboard.storyboard */; };
 		764F96B825AE914B008A0074 /* LikedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764F96B725AE914B008A0074 /* LikedViewController.swift */; };
 		764F96BB25AE938F008A0074 /* LikedIdeaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764F96BA25AE938F008A0074 /* LikedIdeaCell.swift */; };
-		766BB3B125C37E45009DDA6A /* LegacyScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766BB3B025C37E45009DDA6A /* LegacyScrollView.swift */; };
 		76725B4C25885AC4002AE137 /* SetupProfileViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76725B4B25885AC4002AE137 /* SetupProfileViewModifier.swift */; };
 		767F2DA3255E161800638222 /* IdeaItemModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767F2DA2255E161800638222 /* IdeaItemModelView.swift */; };
 		767F2DA6255E20A600638222 /* IdeaDetailsViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767F2DA5255E20A600638222 /* IdeaDetailsViewModifier.swift */; };
@@ -73,7 +72,6 @@
 		764F96B025AE8A99008A0074 /* LikedIdeasStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LikedIdeasStoryboard.storyboard; sourceTree = "<group>"; };
 		764F96B725AE914B008A0074 /* LikedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedViewController.swift; sourceTree = "<group>"; };
 		764F96BA25AE938F008A0074 /* LikedIdeaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedIdeaCell.swift; sourceTree = "<group>"; };
-		766BB3B025C37E45009DDA6A /* LegacyScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyScrollView.swift; sourceTree = "<group>"; };
 		76725B4B25885AC4002AE137 /* SetupProfileViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewModifier.swift; sourceTree = "<group>"; };
 		767F2DA2255E161800638222 /* IdeaItemModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaItemModelView.swift; sourceTree = "<group>"; };
 		767F2DA5255E20A600638222 /* IdeaDetailsViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaDetailsViewModifier.swift; sourceTree = "<group>"; };
@@ -176,6 +174,114 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		767A80FD25D4B08B00B16187 /* Liked Ideas */ = {
+			isa = PBXGroup;
+			children = (
+				764CED9F2550FC53006B1A54 /* LikedIdeasViewController.swift */,
+				76AD4C5425538B1300C1B5C6 /* LikedIdeasView.swift */,
+				764F96B025AE8A99008A0074 /* LikedIdeasStoryboard.storyboard */,
+				764F96B725AE914B008A0074 /* LikedViewController.swift */,
+				764F96BA25AE938F008A0074 /* LikedIdeaCell.swift */,
+			);
+			path = "Liked Ideas";
+			sourceTree = "<group>";
+		};
+		767A80FE25D4B0E000B16187 /* Sign Up */ = {
+			isa = PBXGroup;
+			children = (
+				76B28CD62531747600F1A61C /* SignUpView.swift */,
+				7691F19F25A91F0900D2DD48 /* CreateUserView.swift */,
+			);
+			path = "Sign Up";
+			sourceTree = "<group>";
+		};
+		767A810125D4B12300B16187 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				76B28CD9253174C300F1A61C /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		767A810425D4B13400B16187 /* User Profile */ = {
+			isa = PBXGroup;
+			children = (
+				7688A3A42581CB9400C9F473 /* SetupProfileView.swift */,
+				7645851625C27DFC00C4FBC0 /* UserProfileView.swift */,
+			);
+			path = "User Profile";
+			sourceTree = "<group>";
+		};
+		767A810625D4B15000B16187 /* Idea List */ = {
+			isa = PBXGroup;
+			children = (
+				76E359272539232A0006A641 /* IdeaListView.swift */,
+				76CF26D7255B8B5900A46A4F /* IdeaDetailsView.swift */,
+			);
+			path = "Idea List";
+			sourceTree = "<group>";
+		};
+		767A810825D4B16600B16187 /* Launch Views */ = {
+			isa = PBXGroup;
+			children = (
+				7623B6F425316FE30038E3CC /* ContentView.swift */,
+				76CF26DB255B936000A46A4F /* SplashView.swift */,
+			);
+			path = "Launch Views";
+			sourceTree = "<group>";
+		};
+		767A810A25D4B1A100B16187 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				76BD6C712554DFCE00E4F392 /* TabbarView.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		767A810C25D4B1E200B16187 /* Sheets */ = {
+			isa = PBXGroup;
+			children = (
+				76E359152537B83B0006A641 /* SheetView.swift */,
+				76E359182537B8DE0006A641 /* CustomSheetView.swift */,
+				76E359202537E0CF0006A641 /* CloseModalLip.swift */,
+				76CF26D4255B762100A46A4F /* SheetPresenter.swift */,
+			);
+			path = Sheets;
+			sourceTree = "<group>";
+		};
+		767A810E25D4B1F400B16187 /* Loadings */ = {
+			isa = PBXGroup;
+			children = (
+				76ACDB91256765C9000ADF73 /* Loading.swift */,
+				7691F19225A9171400D2DD48 /* CustomProgressView.swift */,
+			);
+			path = Loadings;
+			sourceTree = "<group>";
+		};
+		767A811025D4B1FD00B16187 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				76E3592D253942AC0006A641 /* CategoryBubble.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		767A811225D4B20400B16187 /* Idea Cards */ = {
+			isa = PBXGroup;
+			children = (
+				76E3592A253941010006A641 /* DreamCard.swift */,
+			);
+			path = "Idea Cards";
+			sourceTree = "<group>";
+		};
+		767A811525D4B21700B16187 /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				76ACDB9425677D60000ADF73 /* SearchBar.swift */,
+			);
+			path = SearchBar;
+			sourceTree = "<group>";
+		};
 		767F2D9C255E14E400638222 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,23 +302,13 @@
 		76B28CD4253172CA00F1A61C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7623B6F425316FE30038E3CC /* ContentView.swift */,
-				764CED9F2550FC53006B1A54 /* LikedIdeasViewController.swift */,
-				76AD4C5425538B1300C1B5C6 /* LikedIdeasView.swift */,
-				764F96B025AE8A99008A0074 /* LikedIdeasStoryboard.storyboard */,
-				76BD6C712554DFCE00E4F392 /* TabbarView.swift */,
-				76E359272539232A0006A641 /* IdeaListView.swift */,
-				76B28CD62531747600F1A61C /* SignUpView.swift */,
-				76B28CD9253174C300F1A61C /* LoginView.swift */,
-				76E359152537B83B0006A641 /* SheetView.swift */,
-				76E359182537B8DE0006A641 /* CustomSheetView.swift */,
-				7688A3A42581CB9400C9F473 /* SetupProfileView.swift */,
-				7691F19F25A91F0900D2DD48 /* CreateUserView.swift */,
-				76CF26D7255B8B5900A46A4F /* IdeaDetailsView.swift */,
-				76CF26DB255B936000A46A4F /* SplashView.swift */,
-				764F96B725AE914B008A0074 /* LikedViewController.swift */,
-				764F96BA25AE938F008A0074 /* LikedIdeaCell.swift */,
-				7645851625C27DFC00C4FBC0 /* UserProfileView.swift */,
+				767A80FD25D4B08B00B16187 /* Liked Ideas */,
+				767A810825D4B16600B16187 /* Launch Views */,
+				767A810A25D4B1A100B16187 /* Tabbar */,
+				767A810625D4B15000B16187 /* Idea List */,
+				767A80FE25D4B0E000B16187 /* Sign Up */,
+				767A810125D4B12300B16187 /* Login */,
+				767A810425D4B13400B16187 /* User Profile */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -255,14 +351,11 @@
 		76E3591F2537E0A90006A641 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				76E359202537E0CF0006A641 /* CloseModalLip.swift */,
-				76E3592A253941010006A641 /* DreamCard.swift */,
-				76E3592D253942AC0006A641 /* CategoryBubble.swift */,
-				76CF26D4255B762100A46A4F /* SheetPresenter.swift */,
-				76ACDB91256765C9000ADF73 /* Loading.swift */,
-				76ACDB9425677D60000ADF73 /* SearchBar.swift */,
-				7691F19225A9171400D2DD48 /* CustomProgressView.swift */,
-				766BB3B025C37E45009DDA6A /* LegacyScrollView.swift */,
+				767A810C25D4B1E200B16187 /* Sheets */,
+				767A811225D4B20400B16187 /* Idea Cards */,
+				767A811025D4B1FD00B16187 /* Categories */,
+				767A810E25D4B1F400B16187 /* Loadings */,
+				767A811525D4B21700B16187 /* SearchBar */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -440,7 +533,6 @@
 				768AB9D125C0CDBD00C62B5E /* API.swift in Sources */,
 				76E3592E253942AC0006A641 /* CategoryBubble.swift in Sources */,
 				76B28CDF25318A9B00F1A61C /* LandingViewModifier.swift in Sources */,
-				766BB3B125C37E45009DDA6A /* LegacyScrollView.swift in Sources */,
 				7623B6F325316FE30038E3CC /* DreamItApp.swift in Sources */,
 				764CEDA02550FC53006B1A54 /* LikedIdeasViewController.swift in Sources */,
 				76E359192537B8DE0006A641 /* CustomSheetView.swift in Sources */,

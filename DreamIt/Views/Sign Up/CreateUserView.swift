@@ -97,12 +97,6 @@ struct CreateUserView: View {
                     })
                     .buttonStyle(SaveButtonStyle(validated: validated))
                     .disabled(!validated)
-                    Button("Back", action: {
-                        withAnimation {
-                            isCreateUserPresented = false
-                        }
-                    })
-                    .padding([.top, .leading, .trailing])
                 }
             }
         }

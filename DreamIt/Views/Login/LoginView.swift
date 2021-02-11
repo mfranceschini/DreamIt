@@ -198,12 +198,6 @@ struct UserLoginView: View {
                     })
                     .buttonStyle(SaveButtonStyle(validated: validated))
                     .disabled(!validated)
-                    Button("Back", action: {
-                        withAnimation {
-                            isUserLoginPresented = false
-                        }
-                    })
-                    .padding([.top, .leading, .trailing])
                 }
             }
         }
