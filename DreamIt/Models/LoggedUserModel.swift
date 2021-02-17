@@ -21,4 +21,5 @@ struct LoggedUserModel {
     var country: String
     var phoneNumber: String
     var portfolioURL: String
+    var image: Image?
 }

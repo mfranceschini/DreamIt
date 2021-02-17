@@ -17,10 +17,10 @@ struct CreateUserView: View {
     @State var confirmPassword: String = ""
     @Binding var isCreateUserPresented: Bool
     @Binding var isSetupProfilePresented: Bool
+    @Binding var loggedUser: LoggedUserModel
     @State var loading = false
     @State var isAlertPresented = false
     @State var errorMessage: String?
-//    @Binding var loggedUser: LoggedUserModel
     
     private var validated: Bool {
         !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty && password == confirmPassword
@@ -40,6 +40,7 @@ struct CreateUserView: View {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let userData = authResult {
                 saveUserInfo(userData)
+                loggedUser.email = email
                 loading.toggle()
                 isSetupProfilePresented = true
             }

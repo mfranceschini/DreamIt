@@ -16,6 +16,7 @@ extension UIApplication {
 struct IdeaListView: View {
     
     let api = API()
+    let userAPI = UserAPI()
     
     @State var categories: [CategoryModel] = []
     @State var ideasList: [IdeaItemModelView] = []
@@ -31,6 +32,9 @@ struct IdeaListView: View {
     @State var appliedFilters: [CategoryModel] = []
     @State private var isRotated = false
     @State var didChangeData = false
+    @State var isProfilePresented = false
+    @Binding var userData: LoggedUserModel?
+    @State var didUpdateUser = false
     
     private func loadData() {
         self.loading = true
@@ -45,6 +49,12 @@ struct IdeaListView: View {
                     self.isRotated = false
                 }
             }
+        }
+    }
+    
+    private func loadUserData() {
+        userAPI.getUserProfile { user in
+            userData = user
         }
     }
     
@@ -95,18 +105,14 @@ struct IdeaListView: View {
                 Spacer()
                 Button(action: {
                     //temporary solution
-                    doLogout { isLogged in
-                        if !isLogged {
-                            withAnimation {
-                                isLoggedIn = false
-                            }
-                        }
-                    }
+                    isProfilePresented = true
                 }) {
-                    Image("profile")
+                    Image(systemName: "person.crop.circle")
                         .resizable()
+                        .accentColor(.white)
                         .modifier(ProfileImageModifier())
                 }
+                .disabled(userData == nil)
             }
             .frame(width: Constants.screenSize.width)
             .padding([.top, .leading, .trailing])
@@ -151,17 +157,6 @@ struct IdeaListView: View {
                                     ideaDetailsPresented = true
                                 }
                                 .scaleEffect(scale)
-                                .sheet(
-                                    isPresented: $ideaDetailsPresented,
-                                    onDismiss: {
-                                        if didChangeData {
-                                            loadData()
-                                        }
-                                    },
-                                    content: {
-                                        IdeaDetailsView(ideaId: self.selectedIdea!.id, didChangeData: $didChangeData)
-                                    }
-                                )
                         }
                         .transition(.move(edge: .trailing))
                     }
@@ -197,6 +192,29 @@ struct IdeaListView: View {
             loadData()
             appliedFilters = categories.filter { $0.selected }
         }
+        .sheet(
+            isPresented: ideaDetailsPresented ? self.$ideaDetailsPresented : isProfilePresented ? self.$isProfilePresented : .constant(false),
+            onDismiss: {
+                if ideaDetailsPresented {
+                    if didChangeData {
+                        loadData()
+                    }
+                }
+                else if isProfilePresented {
+                    if didUpdateUser {
+                        loadUserData()
+                    }
+                }
+            },
+            content: {
+                if ideaDetailsPresented {
+                    IdeaDetailsView(ideaId: self.selectedIdea!.id, didChangeData: $didChangeData)
+                }
+                else if isProfilePresented {
+                    SetupProfileView(loggedUser: self.userData!, isLoggedIn: self.$isLoggedIn, isSetupProfilePresented: self.$isProfilePresented, isModalPresented: .constant(false), isEditing: .constant(true), didUpdateUser: $didUpdateUser)
+                }
+            }
+        )
     }
     
 }

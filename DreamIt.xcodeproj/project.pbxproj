@@ -16,7 +16,6 @@
 		763E140525A6BE0000ACAEF7 /* FunctionsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763E140425A6BE0000ACAEF7 /* FunctionsUtils.swift */; };
 		7645851125C2676400C4FBC0 /* UserUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645851025C2676400C4FBC0 /* UserUtils.swift */; };
 		7645851425C2759500C4FBC0 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645851325C2759500C4FBC0 /* UserAPI.swift */; };
-		7645851725C27DFC00C4FBC0 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7645851625C27DFC00C4FBC0 /* UserProfileView.swift */; };
 		764CEDA02550FC53006B1A54 /* LikedIdeasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764CED9F2550FC53006B1A54 /* LikedIdeasViewController.swift */; };
 		764F96B125AE8A99008A0074 /* LikedIdeasStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 764F96B025AE8A99008A0074 /* LikedIdeasStoryboard.storyboard */; };
 		764F96B825AE914B008A0074 /* LikedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764F96B725AE914B008A0074 /* LikedViewController.swift */; };
@@ -53,6 +52,8 @@
 		76E359282539232A0006A641 /* IdeaListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E359272539232A0006A641 /* IdeaListView.swift */; };
 		76E3592B253941010006A641 /* DreamCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3592A253941010006A641 /* DreamCard.swift */; };
 		76E3592E253942AC0006A641 /* CategoryBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E3592D253942AC0006A641 /* CategoryBubble.swift */; };
+		76FBC45C25DC89900079563B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FBC45B25DC89900079563B /* ImagePicker.swift */; };
+		76FBC46125DCA18F0079563B /* CreateIdeaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FBC46025DCA18F0079563B /* CreateIdeaView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +68,6 @@
 		763E140425A6BE0000ACAEF7 /* FunctionsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsUtils.swift; sourceTree = "<group>"; };
 		7645851025C2676400C4FBC0 /* UserUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUtils.swift; sourceTree = "<group>"; };
 		7645851325C2759500C4FBC0 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
-		7645851625C27DFC00C4FBC0 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		764CED9F2550FC53006B1A54 /* LikedIdeasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedIdeasViewController.swift; sourceTree = "<group>"; };
 		764F96B025AE8A99008A0074 /* LikedIdeasStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LikedIdeasStoryboard.storyboard; sourceTree = "<group>"; };
 		764F96B725AE914B008A0074 /* LikedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +104,8 @@
 		76E359272539232A0006A641 /* IdeaListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaListView.swift; sourceTree = "<group>"; };
 		76E3592A253941010006A641 /* DreamCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamCard.swift; sourceTree = "<group>"; };
 		76E3592D253942AC0006A641 /* CategoryBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBubble.swift; sourceTree = "<group>"; };
+		76FBC45B25DC89900079563B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		76FBC46025DCA18F0079563B /* CreateIdeaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateIdeaView.swift; sourceTree = "<group>"; };
 		FB0522F405FF4C60EFFC4070 /* Pods-DreamIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamIt.debug.xcconfig"; path = "Target Support Files/Pods-DreamIt/Pods-DreamIt.debug.xcconfig"; sourceTree = "<group>"; };
 		FFFF58189A0CA4E676927972 /* Pods-DreamIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamIt.release.xcconfig"; path = "Target Support Files/Pods-DreamIt/Pods-DreamIt.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -207,7 +209,6 @@
 			isa = PBXGroup;
 			children = (
 				7688A3A42581CB9400C9F473 /* SetupProfileView.swift */,
-				7645851625C27DFC00C4FBC0 /* UserProfileView.swift */,
 			);
 			path = "User Profile";
 			sourceTree = "<group>";
@@ -302,6 +303,7 @@
 		76B28CD4253172CA00F1A61C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				76FBC45F25DCA1750079563B /* Create Idea */,
 				767A80FD25D4B08B00B16187 /* Liked Ideas */,
 				767A810825D4B16600B16187 /* Launch Views */,
 				767A810A25D4B1A100B16187 /* Tabbar */,
@@ -351,6 +353,7 @@
 		76E3591F2537E0A90006A641 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				76FBC45A25DC89830079563B /* Image */,
 				767A810C25D4B1E200B16187 /* Sheets */,
 				767A811225D4B20400B16187 /* Idea Cards */,
 				767A811025D4B1FD00B16187 /* Categories */,
@@ -365,6 +368,22 @@
 			children = (
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		76FBC45A25DC89830079563B /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				76FBC45B25DC89900079563B /* ImagePicker.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		76FBC45F25DCA1750079563B /* Create Idea */ = {
+			isa = PBXGroup;
+			children = (
+				76FBC46025DCA18F0079563B /* CreateIdeaView.swift */,
+			);
+			path = "Create Idea";
 			sourceTree = "<group>";
 		};
 		7C1C58E66F988088FEB6D85A /* Pods */ = {
@@ -512,6 +531,7 @@
 				7623B6F525316FE30038E3CC /* ContentView.swift in Sources */,
 				7691F1A025A91F0900D2DD48 /* CreateUserView.swift in Sources */,
 				7696E1DB25412B7600EA94DF /* TabbarModel.swift in Sources */,
+				76FBC45C25DC89900079563B /* ImagePicker.swift in Sources */,
 				76E359162537B83C0006A641 /* SheetView.swift in Sources */,
 				76CF26D8255B8B5900A46A4F /* IdeaDetailsView.swift in Sources */,
 				767F2DA6255E20A600638222 /* IdeaDetailsViewModifier.swift in Sources */,
@@ -539,9 +559,9 @@
 				767F2DA3255E161800638222 /* IdeaItemModelView.swift in Sources */,
 				76ACDB9525677D60000ADF73 /* SearchBar.swift in Sources */,
 				7696E1DE25412CC700EA94DF /* CategoryModel.swift in Sources */,
+				76FBC46125DCA18F0079563B /* CreateIdeaView.swift in Sources */,
 				764F96B825AE914B008A0074 /* LikedViewController.swift in Sources */,
 				764F96BB25AE938F008A0074 /* LikedIdeaCell.swift in Sources */,
-				7645851725C27DFC00C4FBC0 /* UserProfileView.swift in Sources */,
 				76CF26DC255B936000A46A4F /* SplashView.swift in Sources */,
 				7645851425C2759500C4FBC0 /* UserAPI.swift in Sources */,
 				76725B4C25885AC4002AE137 /* SetupProfileViewModifier.swift in Sources */,

@@ -25,8 +25,13 @@ struct SetupProfileView: View {
     @Binding var isLoggedIn: Bool
     @Binding var isSetupProfilePresented: Bool
     @Binding var isModalPresented: Bool
+    @Binding var isEditing: Bool
+    @Binding var didUpdateUser: Bool
     @State var isAlertPresented = false
     @State var errorMessage: String?
+    @State private var showingImagePicker = false
+    @State private var inputImage: UIImage?
+    @State var isSignOutAlertPresented = false
     
     private func initialize() {
         // [START setup]
@@ -35,8 +40,13 @@ struct SetupProfileView: View {
         Firestore.firestore().settings = settings
         // [END setup]
         db = Firestore.firestore()
-        
-        loggedUser.country = sortedCountries[selectedCountry]
+        print(loggedUser)
+        if !isEditing {
+            loggedUser.country = sortedCountries[selectedCountry]
+        }
+        else {
+            selectedCountry = sortedCountries.firstIndex(of: loggedUser.country) ?? 0
+        }
     }
     
     private var validated: Bool {
@@ -74,6 +84,48 @@ struct SetupProfileView: View {
         }
     }
     
+    private func updateSetupProfile() {
+        loading.toggle()
+        if let userId = getUserID() {
+            loggedUser.uid = userId
+            let userAPI = UserAPI()
+            userAPI.updateUserProfile(loggedUser) { err in
+                loading.toggle()
+                if let err = err {
+                    print("Error writing document: \(err)")
+                    errorMessage = err.localizedDescription
+                    isAlertPresented = true
+                } else {
+                    print("User Profile successfully written!")
+                    withAnimation {
+                        didUpdateUser = true
+                        isSetupProfilePresented = false
+                    }
+                }
+            }
+        }
+        else {
+            errorMessage = "Could not update user. Please try again."
+            isAlertPresented = true
+        }
+    }
+    
+    private func loadImage() {
+        guard let inputImage = inputImage else { return }
+        self.loggedUser.image = Image(uiImage: inputImage)
+    }
+    
+    private func logout() {
+        isSetupProfilePresented = false
+        doLogout { isLogged in
+            if !isLogged {
+                withAnimation {
+                    isLoggedIn = false
+                }
+            }
+        }
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -90,6 +142,27 @@ struct SetupProfileView: View {
                     
                 }
                 else {
+//                    Button(action: {
+//                        showingImagePicker = true
+//                    }) {
+//                        if self.loggedUser.image == nil {
+//                            Image(systemName: "person.crop.circle.badge.plus")
+//                                .resizable()
+//                                .accentColor(.blue)
+//                                .frame(width: 70, height: 70)
+//                        }
+//                        else {
+//                            Image("profile")
+//                                .resizable()
+//                                .scaledToFill()
+//                        }
+//                    }
+//                    .frame(width: 100, height: 100)
+//                    .cornerRadius(50)
+//                    .shadow(color: Color.gray,
+//                            radius: 2.0,
+//                            x: 1,
+//                            y: 1)
                     Form {
                         Section {
                             VStack(alignment: .leading) {
@@ -103,6 +176,8 @@ struct SetupProfileView: View {
                             }
                         }
                         Section {
+                            TextField("Email", text: self.$loggedUser.email)
+                                .disabled(true)
                             TextField("First Name", text: self.$loggedUser.firstName)
                                 .disableAutocorrection(true)
                                 .autocapitalization(.words)
@@ -130,6 +205,7 @@ struct SetupProfileView: View {
                                 .pickerStyle(WheelPickerStyle())
                                 .onTapGesture {
                                     withAnimation {
+                                        loggedUser.country = sortedCountries[selectedCountry]
                                         self.isCountryPresented.toggle()
                                     }
                                 }
@@ -151,7 +227,12 @@ struct SetupProfileView: View {
                         .padding([.bottom, .leading, .trailing])
                         Button("Save", action: {
                             withAnimation {
-                                addSetupProfile()
+                                if isEditing {
+                                    updateSetupProfile()
+                                }
+                                else {
+                                    addSetupProfile()
+                                }
                             }
                         })
                         .buttonStyle(SaveButtonStyle(validated: validated))
@@ -165,15 +246,34 @@ struct SetupProfileView: View {
             .alert(isPresented: $isAlertPresented, content: {
                 Alert(title: Text("Error"), message: Text(errorMessage ?? ""), dismissButton: .default(Text("Dismiss")))
             })
+            .alert(isPresented: $isSignOutAlertPresented, content: {
+                Alert(title: Text("Sign Out"), message: Text("Do you really want to sign out?"),
+                      primaryButton: .default(Text("Confirm")) {
+                        logout()
+                      },
+                      secondaryButton: .cancel())
+            })
+            .toolbar {
+                if isEditing {
+                    Button(action: {
+                        isSignOutAlertPresented = true
+                    }) {
+                        Text("Sign out")
+                    }
+                }
+            }
         }
         .onAppear(perform: {
             initialize()
         })
+        .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+            ImagePicker(image: self.$inputImage)
+        }
     }
 }
 
 struct SetupProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        SetupProfileView(loggedUser: LoggedUserModel(uid: "", firstName: "", lastName: "", profileType: ProfileTypes.Creator, email: "", country: "", phoneNumber: "", portfolioURL: ""), isLoggedIn: .constant(false), isSetupProfilePresented: .constant(false), isModalPresented: .constant(false))
+        SetupProfileView(loggedUser: LoggedUserModel(uid: "", firstName: "", lastName: "", profileType: ProfileTypes.Creator, email: "", country: "", phoneNumber: "", portfolioURL: ""), isLoggedIn: .constant(false), isSetupProfilePresented: .constant(false), isModalPresented: .constant(false), isEditing: .constant(true), didUpdateUser: .constant(false))
     }
 }

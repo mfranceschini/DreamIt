@@ -33,7 +33,8 @@ struct ProfileImageModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .scaledToFill()
-            .frame(width: /*@START_MENU_TOKEN@*/50.0/*@END_MENU_TOKEN@*/, height: 50.0)
+//            .frame(width: 50.0, height: 50.0)
+            .frame(width: 30.0, height: 30.0)
             .clipShape(Circle())
             .shadow(radius: 10)
             .padding()

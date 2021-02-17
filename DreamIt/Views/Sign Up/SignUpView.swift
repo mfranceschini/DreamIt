@@ -18,6 +18,7 @@ struct SignUpView: View {
     @Environment(\.colorScheme) var colorScheme
     @State var isSetupProfilePresented: Bool = false
     @State var isCreateUserPresented: Bool = true
+    @State var loggedUser: LoggedUserModel
     
     var body: some View {
         let phoneRatio = String(format: "%.3f", Constants.screenSize.width / Constants.screenSize.height)
@@ -35,7 +36,7 @@ struct SignUpView: View {
                 Spacer()
                 
                 if isCreateUserPresented {
-                    CreateUserView(isCreateUserPresented: $isCreateUserPresented, isSetupProfilePresented: $isSetupProfilePresented)
+                    CreateUserView(isCreateUserPresented: $isCreateUserPresented, isSetupProfilePresented: $isSetupProfilePresented, loggedUser: $loggedUser)
                         .transition(.move(edge: isCreateUserPresented ? .trailing : .leading))
                 }
                 else {
@@ -99,7 +100,7 @@ struct SignUpView: View {
         .padding(.bottom, isXorAbove ? 60 : 50 )
         .padding(.top, 15)
         .sheet(isPresented: $isSetupProfilePresented, content: {
-            SetupProfileView(loggedUser: LoggedUserModel(uid: "", firstName: "", lastName: "", profileType: ProfileTypes.Creator, email: "", country: "", phoneNumber: "", portfolioURL: ""), isLoggedIn: self.$isLoggedIn, isSetupProfilePresented: self.$isSetupProfilePresented, isModalPresented: $isModalPresented)
+            SetupProfileView(loggedUser: self.loggedUser, isLoggedIn: self.$isLoggedIn, isSetupProfilePresented: self.$isSetupProfilePresented, isModalPresented: $isModalPresented, isEditing: .constant(false), didUpdateUser: .constant(false))
         })
     }
     

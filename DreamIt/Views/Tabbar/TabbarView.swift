@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct TabbarView: View {
+    let userAPI = UserAPI()
     @Environment(\.colorScheme) var colorScheme
     @State private var selectedTab = "home"
     @Binding var isLoggedIn: Bool
+    @State var userData: LoggedUserModel?
+    
+    private func loadUserData() {
+        userAPI.getUserProfile { user in
+            userData = user
+        }
+    }
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            IdeaListView(ideaDetailsPresented: false, selectedTab: $selectedTab, isLoggedIn: $isLoggedIn)
+            IdeaListView(ideaDetailsPresented: false, selectedTab: $selectedTab, isLoggedIn: $isLoggedIn, userData: $userData)
                 .tabItem {
                     Image(systemName: "house.fill")
                         .onTapGesture {
@@ -22,15 +30,7 @@ struct TabbarView: View {
                         }
                 }
                 .tag("home")
-            LikedIdeasView()
-                .tabItem {
-                    Image(systemName: "ellipsis.bubble.fill")
-                        .onTapGesture {
-                            self.selectedTab = "chats"
-                        }
-                }
-                .tag("chats")
-            IdeaListView(ideaDetailsPresented: false, selectedTab: $selectedTab, isLoggedIn: $isLoggedIn)
+            CreateIdeaView(userData: $userData, selectedTab: $selectedTab)
                 .tabItem {
                     Image(systemName: "plus.diamond")
                         .onTapGesture {
@@ -40,23 +40,24 @@ struct TabbarView: View {
                 .tag("new")
             LikedIdeasView()
                 .tabItem {
+                    Image(systemName: "ellipsis.bubble.fill")
+                        .onTapGesture {
+                            self.selectedTab = "chats"
+                        }
+                }
+                .tag("chats")
+            LikedIdeasView()
+                .tabItem {
                     Image(systemName: "lightbulb.fill")
                         .onTapGesture {
                             self.selectedTab = "liked"
                         }
                 }
                 .tag("liked")
-            UserProfileView(isLoggedIn: $isLoggedIn)
-                .tabItem {
-                    Image(systemName: "person.fill")
-                        .onTapGesture {
-                            self.selectedTab = "profile"
-                        }
-                }
-                .tag("profile")
         }
         .onAppear() {
             UITabBar.appearance().isTranslucent = true
+            loadUserData()
         }
         .edgesIgnoringSafeArea(.all)
         .accentColor(colorScheme == .dark ?

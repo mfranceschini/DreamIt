@@ -25,7 +25,7 @@ struct CustomSheetView: View {
                 ZStack(alignment: .top) {
                     switch targetView {
                     case .SignUp:
-                        SignUpView(movingOffset: self.$currentHeight, isLoggedIn: self.$isLoggedIn, isModalPresented: $isShowing)
+                        SignUpView(movingOffset: self.$currentHeight, isLoggedIn: self.$isLoggedIn, isModalPresented: $isShowing, loggedUser: LoggedUserModel(uid: "", firstName: "", lastName: "", profileType: .Creator, email: "", country: "", phoneNumber: "", portfolioURL: "", image: nil))
                     case .Login:
                         LoginView(movingOffset: self.$currentHeight, isLoggedIn: self.$isLoggedIn, isModalPresented: $isShowing)
                     case .None:
