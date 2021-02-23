@@ -49,7 +49,7 @@ struct SignUpView: View {
                             .background(Color.black)
                             .foregroundColor(.white)
                             .cornerRadius(15.0)
-                            .frame(width: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .frame(width: 200, alignment: .center)
                             .lineLimit(1)
                             Spacer()
                             
@@ -60,7 +60,7 @@ struct SignUpView: View {
                             .background(Color.blue)
                             .foregroundColor(.white)
                             .cornerRadius(15.0)
-                            .frame(width: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .frame(width: 200, alignment: .center)
                             .lineLimit(1)
                             Spacer()
                             
@@ -71,7 +71,7 @@ struct SignUpView: View {
                             .background(Color.blue)
                             .foregroundColor(.white)
                             .cornerRadius(15.0)
-                            .frame(width: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .frame(width: 300, alignment: .center)
                             .lineLimit(1)
                             Spacer()
                         }

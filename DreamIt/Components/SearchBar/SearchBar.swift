@@ -49,7 +49,6 @@ struct SearchBar: UIViewRepresentable {
         let searchBar = UISearchBar(frame: .zero)
         searchBar.delegate = context.coordinator
         searchBar.searchBarStyle = .minimal
-        searchBar.placeholder = "Search"
         searchBar.autocapitalizationType = .none
         searchBar.isTranslucent = true
         searchBar.tintColor = .white

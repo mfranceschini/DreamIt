@@ -65,9 +65,22 @@ struct IdeaItemModelView: Identifiable {
     public var thumbnail: UIImage {
         switch ideaItem.category {
         case 1:
-            return UIImage(named: "test")!
+            //Mobile Apps
+            return UIImage(named: "smartphone")!
+        case 2:
+            //Websites
+            return UIImage(named: "website")!
+        case 3:
+            //UX Design
+            return UIImage(named: "ux")!
+        case 4:
+            //Video Maker
+            return UIImage(named: "video")!
+        case 5:
+            //Drawing
+            return UIImage(named: "drawing")!
         default:
-            return UIImage(named: "test")!
+            return UIImage()
         }
     }
     
@@ -141,5 +154,9 @@ struct IdeaItemModelView: Identifiable {
     
     mutating func setIdeaLike() {
         ideaItem.liked.toggle()
+    }
+    
+    mutating func setImpressions(newValue: Int) {
+        ideaItem.impressions = newValue
     }
 }

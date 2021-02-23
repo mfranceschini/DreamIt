@@ -19,7 +19,7 @@ struct AuthorModifier: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
     func body(content: Content) -> some View {
         content
-        .font(.title3)
+        .font(.headline)
         .foregroundColor(colorScheme == .dark ? Color.white : Color.gray)
     }
 }

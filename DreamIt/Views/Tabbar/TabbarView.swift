@@ -22,6 +22,8 @@ struct TabbarView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
+            
+            // MARK: Idea List
             IdeaListView(ideaDetailsPresented: false, selectedTab: $selectedTab, isLoggedIn: $isLoggedIn, userData: $userData)
                 .tabItem {
                     Image(systemName: "house.fill")
@@ -30,7 +32,9 @@ struct TabbarView: View {
                         }
                 }
                 .tag("home")
-            CreateIdeaView(userData: $userData, selectedTab: $selectedTab)
+            
+            // MARK: Create New Idea
+            CreateIdeaView(userData: $userData, selectedTab: $selectedTab, isLoggedIn: $isLoggedIn)
                 .tabItem {
                     Image(systemName: "plus.diamond")
                         .onTapGesture {
@@ -38,14 +42,9 @@ struct TabbarView: View {
                         }
                 }
                 .tag("new")
-            LikedIdeasView()
-                .tabItem {
-                    Image(systemName: "ellipsis.bubble.fill")
-                        .onTapGesture {
-                            self.selectedTab = "chats"
-                        }
-                }
-                .tag("chats")
+            
+            
+            // MARK: Liked Ideas
             LikedIdeasView()
                 .tabItem {
                     Image(systemName: "lightbulb.fill")
@@ -54,6 +53,16 @@ struct TabbarView: View {
                         }
                 }
                 .tag("liked")
+            
+            // MARK: Chats
+            LikedIdeasView()
+                .tabItem {
+                    Image(systemName: "ellipsis.bubble.fill")
+                        .onTapGesture {
+                            self.selectedTab = "chats"
+                        }
+                }
+                .tag("chats")
         }
         .onAppear() {
             UITabBar.appearance().isTranslucent = true

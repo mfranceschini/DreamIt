@@ -40,12 +40,19 @@ struct SetupProfileView: View {
         Firestore.firestore().settings = settings
         // [END setup]
         db = Firestore.firestore()
-        print(loggedUser)
+        print("Logged User ->",loggedUser)
         if !isEditing {
             loggedUser.country = sortedCountries[selectedCountry]
         }
         else {
             selectedCountry = sortedCountries.firstIndex(of: loggedUser.country) ?? 0
+            
+            switch loggedUser.profileType {
+            case .Creator:
+                selectedProfileType = 0
+            case .Implementer:
+                selectedProfileType = 1
+            }
         }
     }
     
@@ -142,27 +149,6 @@ struct SetupProfileView: View {
                     
                 }
                 else {
-//                    Button(action: {
-//                        showingImagePicker = true
-//                    }) {
-//                        if self.loggedUser.image == nil {
-//                            Image(systemName: "person.crop.circle.badge.plus")
-//                                .resizable()
-//                                .accentColor(.blue)
-//                                .frame(width: 70, height: 70)
-//                        }
-//                        else {
-//                            Image("profile")
-//                                .resizable()
-//                                .scaledToFill()
-//                        }
-//                    }
-//                    .frame(width: 100, height: 100)
-//                    .cornerRadius(50)
-//                    .shadow(color: Color.gray,
-//                            radius: 2.0,
-//                            x: 1,
-//                            y: 1)
                     Form {
                         Section {
                             VStack(alignment: .leading) {
@@ -176,8 +162,6 @@ struct SetupProfileView: View {
                             }
                         }
                         Section {
-                            TextField("Email", text: self.$loggedUser.email)
-                                .disabled(true)
                             TextField("First Name", text: self.$loggedUser.firstName)
                                 .disableAutocorrection(true)
                                 .autocapitalization(.words)

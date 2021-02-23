@@ -21,6 +21,7 @@ struct CreateIdeaView: View {
     @State var errorMessage: String?
     @Binding var userData: LoggedUserModel?
     @Binding var selectedTab: String
+    @Binding var isLoggedIn: Bool
     @Environment(\.colorScheme) var colorScheme
     
     private var validated: Bool {
@@ -69,6 +70,17 @@ struct CreateIdeaView: View {
                 else {
                     errorMessage = "Could not create idea. Please try again."
                     isAlertPresented = true
+                }
+            }
+        }
+        else {
+            errorMessage = "Could not load your information. Please log in again."
+            isAlertPresented = true
+            doLogout { isLogged in
+                if !isLogged {
+                    withAnimation {
+                        isLoggedIn = false
+                    }
                 }
             }
         }
@@ -138,7 +150,11 @@ struct CreateIdeaView: View {
                         TextField("Title", text: self.$idea.title)
                             .disableAutocorrection(true)
                             .autocapitalization(.words)
-                        TextField("Description", text: self.$idea.description)
+                        VStack(alignment: .leading) {
+                            Text("Description")
+                                .foregroundColor(Color(UIColor.placeholderText))
+                            TextEditor(text: self.$idea.description)
+                        }
                         VStack {
                             Image(systemName: "exclamationmark.circle")
                                 .resizable()
@@ -179,6 +195,9 @@ struct CreateIdeaView: View {
         }
         .alert(isPresented: $isAlertPresented, content: {
             Alert(title: Text("Error"), message: Text(errorMessage ?? ""), dismissButton: .default(Text("Dismiss")))
+        })
+        .sheet(isPresented: $isProfilePresented, content: {
+            SetupProfileView(loggedUser: self.userData!, isLoggedIn: self.$isLoggedIn, isSetupProfilePresented: self.$isProfilePresented, isModalPresented: .constant(false), isEditing: .constant(true), didUpdateUser: .constant(true))
         })
     }
 }

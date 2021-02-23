@@ -12,6 +12,7 @@ struct DreamCard: View {
     @Binding var item: IdeaItemModelView
     @State private var isRotated = false
     @State private var isLiked = false
+    @Environment(\.colorScheme) var colorScheme
 
     private func likeIdea() {
         let api = API()
@@ -48,6 +49,8 @@ struct DreamCard: View {
                 HStack {
                     Image(uiImage: self.item.thumbnail)
                         .resizable()
+                        .renderingMode(.template)
+                        .accentColor(colorScheme == .dark ? .white : .black)
                         .modifier(DreamImageModifier())
                     
                     VStack(alignment: .leading) {
@@ -60,7 +63,6 @@ struct DreamCard: View {
                             .frame(alignment: .leading)
                             .modifier(DreamAuthorModifier())
                     }
-                    .padding(.leading, 10)
                     Spacer()
                 }
                 HStack {

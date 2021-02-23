@@ -48,7 +48,7 @@ struct DaysAfterPostLabelModifier: ViewModifier {
 struct DreamImageModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .frame(width: 90, height: 90, alignment: .leading)
+            .frame(width: 80, height: 80, alignment: .leading)
             .padding(.leading)
     }
 }
@@ -67,7 +67,7 @@ struct DreamAuthorModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.subheadline)
-            .foregroundColor(colorScheme == .dark ? Color.white : Color.gray)
+            .foregroundColor(Color.gray)
         
     }
 }

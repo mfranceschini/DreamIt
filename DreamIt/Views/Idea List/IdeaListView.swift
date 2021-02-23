@@ -26,28 +26,24 @@ struct IdeaListView: View {
     @State private var scale: CGFloat = 1
     @State private var searchText : String = ""
     @State private var selectedIdea: IdeaItemModelView?
-    @Environment(\.colorScheme) var colorScheme
-    @Binding var selectedTab: String
-    @Binding var isLoggedIn: Bool
     @State var appliedFilters: [CategoryModel] = []
     @State private var isRotated = false
     @State var didChangeData = false
     @State var isProfilePresented = false
-    @Binding var userData: LoggedUserModel?
     @State var didUpdateUser = false
+    @State private var scrollViewID = UUID()
+    @Environment(\.colorScheme) var colorScheme
+    @Binding var selectedTab: String
+    @Binding var isLoggedIn: Bool
+    @Binding var userData: LoggedUserModel?
     
     private func loadData() {
         self.loading = true
-        api.getIdeas { ideaData in
+        api.getCategories { categoryData in
             withAnimation {
-                ideasList = ideaData
-            }
-            api.getCategories { categoryData in
-                withAnimation {
-                    categories = categoryData
-                    self.loading = false
-                    self.isRotated = false
-                }
+                categories = categoryData
+                self.loading = false
+                self.isRotated = false
             }
         }
     }
@@ -66,6 +62,7 @@ struct IdeaListView: View {
                 withAnimation {
                     ideasList = ideaData
                     self.filterLoading = false
+                    scrollViewID = UUID()
                 }
             }
         }
@@ -73,6 +70,7 @@ struct IdeaListView: View {
             withAnimation {
                 ideasList = []
                 self.filterLoading = false
+                scrollViewID = UUID()
             }
         }
     }
@@ -104,7 +102,6 @@ struct IdeaListView: View {
                 }
                 Spacer()
                 Button(action: {
-                    //temporary solution
                     isProfilePresented = true
                 }) {
                     Image(systemName: "person.crop.circle")
@@ -137,7 +134,7 @@ struct IdeaListView: View {
                             }
                             .frame(height: 50)
                             .padding(.horizontal, 50)
-                        }
+                        }.id(scrollViewID)
                     }
                     
                     if filterLoading {
@@ -195,20 +192,18 @@ struct IdeaListView: View {
         .sheet(
             isPresented: ideaDetailsPresented ? self.$ideaDetailsPresented : isProfilePresented ? self.$isProfilePresented : .constant(false),
             onDismiss: {
-                if ideaDetailsPresented {
-                    if didChangeData {
-                        loadData()
-                    }
+                if didChangeData {
+                    loadData()
+                    didChangeData = false
                 }
-                else if isProfilePresented {
-                    if didUpdateUser {
-                        loadUserData()
-                    }
+                if didUpdateUser {
+                    loadUserData()
+                    didUpdateUser = false
                 }
             },
             content: {
                 if ideaDetailsPresented {
-                    IdeaDetailsView(ideaId: self.selectedIdea!.id, didChangeData: $didChangeData)
+                    IdeaDetailsView(ideaId: self.selectedIdea!.id, ideaImpressions: self.selectedIdea!.impressions, didChangeData: $didChangeData)
                 }
                 else if isProfilePresented {
                     SetupProfileView(loggedUser: self.userData!, isLoggedIn: self.$isLoggedIn, isSetupProfilePresented: self.$isProfilePresented, isModalPresented: .constant(false), isEditing: .constant(true), didUpdateUser: $didUpdateUser)

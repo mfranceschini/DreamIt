@@ -10,18 +10,23 @@ import SwiftUI
 struct IdeaDetailsView: View {
     
     @State var ideaId: String
+    @State var ideaImpressions: String
     @State var ideaData: IdeaItemModelView?
     @State var isLiked: Bool = false
     @State var loading: Bool = false
     @Binding var didChangeData: Bool
+    @Environment(\.colorScheme) var colorScheme
     let api = API()
     
     private func loadData() {
         self.loading = true
-        api.getIdeasById(ideaId: ideaId) { idea in
-            self.isLiked = idea.liked
-            ideaData = idea
-            self.loading = false
+        api.increaseImpressionsCounter(ideaId: ideaId, currentImpressions: ideaImpressions) {
+            api.getIdeasById(ideaId: ideaId) { idea in
+                self.isLiked = idea.liked
+                ideaData = idea
+                self.loading = false
+                didChangeData = true
+            }
         }
     }
     
@@ -56,7 +61,9 @@ struct IdeaDetailsView: View {
                         HStack() {
                             Image(uiImage: ideaData.thumbnail)
                                 .resizable()
-                                .frame(width: 90, height: 90, alignment: .leading)
+                                .renderingMode(.template)
+                                .accentColor(colorScheme == .dark ? .white : .black)
+                                .frame(width: 80, height: 80, alignment: .leading)
                             VStack(alignment: .leading) {
                                 Text(ideaData.title.localizedCapitalized)
                                     .fontWeight(.bold)

@@ -40,7 +40,7 @@ struct CreateUserView: View {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let userData = authResult {
                 saveUserInfo(userData)
-                loggedUser.email = email
+                self.loggedUser.email = email
                 loading.toggle()
                 isSetupProfilePresented = true
             }

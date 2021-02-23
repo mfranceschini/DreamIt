@@ -17,9 +17,14 @@ class LikedIdeaCell: UITableViewCell {
     @IBOutlet weak var author: UILabel!
     @IBOutlet weak var impressions: UILabel!
     @IBOutlet weak var impressionImg: UIImageView!
+    @IBOutlet weak var view: UIView!
+    
+    let likedImg = UIImage(named: "hand.thumbsup.fill")?.withRenderingMode(.alwaysTemplate)
+    let dislikedImg = UIImage(named: "hand.thumbsup")?.withRenderingMode(.alwaysTemplate)
     
     func setup(_ idea: IdeaItemModelView) {
-        self.author.text = idea.author
+        self.view.layer.cornerRadius = 20.0
+        self.author.text = "by \(idea.author)"
         self.ideaTitle.text = idea.title
         self.impressions.text = idea.impressions
         self.postDate.text = idea.postDate
@@ -28,20 +33,20 @@ class LikedIdeaCell: UITableViewCell {
         self.thumbnail.layer.shadowRadius = 4
         self.thumbnail.layer.shadowOffset = CGSize.init(width: 20, height: 20)
         
-//        if idea.liked {
-//            like.setImage(UIImage(named: "hand.thumbsup.fill"), for: .normal)
-//        }
-//        else {
-//            like.setImage(UIImage(named: "hand.thumbsup"), for: .normal)
-//        }
+        if idea.liked {
+            like.setImage(likedImg, for: .normal)
+        }
+        else {
+            like.setImage(dislikedImg, for: .normal)
+        }
     }
     
     @IBAction func setLike() {
         if like.currentImage == UIImage(named: "hand.thumbsup") {
-            like.setImage(UIImage(named: "hand.thumbsup.fill"), for: .normal)
+            like.setImage(likedImg, for: .normal)
         }
         else if like.currentImage == UIImage(named: "hand.thumbsup.fill") {
-            like.setImage(UIImage(named: "hand.thumbsup"), for: .normal)
+            like.setImage(dislikedImg, for: .normal)
         }
     }
     
